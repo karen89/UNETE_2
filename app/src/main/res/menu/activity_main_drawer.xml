@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_48dp"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_ac"
+            android:icon="@drawable/ic_group_work_black_48dp"
+            android:title="Asociaciones" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_room_black_48dp"
+            android:title="Mapa" />
+        <item
+            android:id="@+id/nav_event"
+            android:icon="@drawable/ic_event_black_48dp"
+            android:title="Eventos" />
+
+    </group>
+
+    <item android:title="UNE A.C.">
+        <menu>
+            <item
+                android:id="@+id/nav_une"
+                android:icon="@drawable/ic_favorite_border_black_48dp"
+                android:title="UNE" />
+            <item
+                android:id="@+id/nav_donate"
+                android:icon="@drawable/ic_attach_money_black_48dp"
+                android:title="Donar a UNE" />
+        </menu>
+    </item>
+
+
+    <item android:title="Configuración">
+        <menu>
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/ic_person_black_48dp"
+                android:title="Iniciar Sesión" />
+            <item
+                android:id="@+id/nav_signup"
+                android:icon="@drawable/ic_person_add_black_48dp"
+                android:title="Registrarse" />
+            <item
+                android:id="@+id/nav_comment"
+                android:icon="@drawable/ic_comment_black_48dp"
+                android:title="Comentarios" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_help_black_48dp"
+                android:title="Acerca" />
+        </menu>
+    </item>
+
+
+
+</menu>
