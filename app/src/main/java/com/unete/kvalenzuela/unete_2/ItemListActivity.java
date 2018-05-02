@@ -24,8 +24,8 @@ import java.util.List;
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
  * lead to a {@link ItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * item responsable. On tablets, the activity presents the list of items and
+ * item responsable side-by-side using two vertical panes.
  */
 public class ItemListActivity extends AppCompatActivity {
 
@@ -116,7 +116,7 @@ public class ItemListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mContentView.setText(mValues.get(position).nombreAC);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -137,5 +137,11 @@ public class ItemListActivity extends AppCompatActivity {
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
         }
+    }
+
+    /*Called when the user click "Donar $2" button*/
+    public void donateScreen(View view){
+        Intent intent = new Intent(this, DonateUNEActivity.class);
+        startActivity(intent);
     }
 }

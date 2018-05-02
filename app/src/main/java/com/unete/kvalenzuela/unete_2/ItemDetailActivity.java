@@ -13,7 +13,7 @@ import android.view.MenuItem;
 /**
  * An activity representing a single Item detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
- * item details are presented side-by-side with a list of items
+ * item responsable are presented side-by-side with a list of items
  * in a {@link ItemListActivity}.
  */
 public class ItemDetailActivity extends AppCompatActivity {
@@ -31,6 +31,11 @@ public class ItemDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                /*Called when the user click "Donar $2" button
+                    Intent intent = new Intent(String.valueOf(DonateUNEActivity.class));
+                    startActivity(intent);*/
+
             }
         });
 
@@ -69,7 +74,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
             // This ID represents the Home or Up button. In the case of this
             // activity, the Up button is shown. For
-            // more details, see the Navigation pattern on Android Design:
+            // more responsable, see the Navigation pattern on Android Design:
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
@@ -78,4 +83,6 @@ public class ItemDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

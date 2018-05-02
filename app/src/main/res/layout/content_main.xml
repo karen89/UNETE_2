@@ -50,7 +50,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:src="@mipmap/logo_login" />
+                android:src="@mipmap/logo_login"
+                android:onClick="medioAmbienteCat"/>
             <ImageView
                 android:id="@+id/cat2"
                 android:layout_width="83dp"

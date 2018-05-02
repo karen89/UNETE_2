@@ -118,4 +118,12 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, DonateUNEActivity.class);
         startActivity(intent);
     }
+
+    /*Called when the user click "Donar $2" button*/
+    public void medioAmbienteCat(View view){
+        //Carga la lista de AC de medio ambiente
+        Intent intent = new Intent(this, ItemListActivity.class);
+        startActivity(intent);
+    }
+
 }
