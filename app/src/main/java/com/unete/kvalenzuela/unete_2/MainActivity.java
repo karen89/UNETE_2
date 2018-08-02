@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //MENU
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_ac) {
-
+            Intent intent = new Intent(this, ItemListActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_map) {
 
         } else if (id == R.id.nav_event) {
@@ -99,7 +102,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_signup) {
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_comment) {
 
         } else if (id == R.id.nav_about) {
@@ -110,8 +112,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 
     /*Called when the user click "Donar $2" button*/
     public void donateScreen(View view){

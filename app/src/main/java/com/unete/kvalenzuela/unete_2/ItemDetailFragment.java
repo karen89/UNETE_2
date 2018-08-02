@@ -50,7 +50,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.nombreAC);
+                appBarLayout.setTitle(mItem.nombreCorto);
             }
         }
     }
@@ -62,11 +62,12 @@ public class ItemDetailFragment extends Fragment {
 
         // Show the dummy nombreAC as text in a TextView.
         if (mItem != null) {
+            ((TextView) rootView.findViewById(R.id.txtnombreAC)).setText(mItem.nombreAC);
             ((TextView) rootView.findViewById(R.id.txtresponsable)).setText(mItem.responsable);
             ((TextView) rootView.findViewById(R.id.txtcorreo)).setText(mItem.email);
             ((TextView) rootView.findViewById(R.id.txttelefono)).setText(mItem.celular);
             ((TextView) rootView.findViewById(R.id.txtdescripcion)).setText(mItem.descripcion);
-            ((TextView) rootView.findViewById(R.id.txtmision)).setText(mItem.mision);
+            ((TextView) rootView.findViewById(R.id.txtCuentaBancaria)).setText(mItem.cuentaBancaria);
         }
 
         return rootView;

@@ -12,25 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-<!-- ___________________________________SECCION LOGO-DESCRIPCION_______________________________ -->
+        <!-- ___________________________________SECCION LOGO-DESCRIPCION_______________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/logoAC"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:src="@mipmap/logo_une_sinfondo" />
+                android:src="@mipmap/logo_login" />
 
             <TextView
-                android:id="@+id/txtdescripcion"
+                android:id="@+id/txtnombreAC"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
+      <!--  <TextView
+            android:id="@+id/txtdescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp" />-->
 
         <!--<Button
             android:id="@+id/donateBtn"
@@ -43,58 +56,82 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />-->
- <!-- ___________________________________SECCION MISION_______________________________ -->
+        <!-- ___________________________________SECCION DESCRIPCION_______________________________ -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Misión"
+            android:text="Descripción"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <View
+            android:id="@+id/dividerDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/txtdescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp" />
 
+        <!-- ___________________________________SECCION AYUDA_______________________________ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Cómo ayudar"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mision:  "
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14dp" />-->
+        <View
+            android:id="@+id/dividerAyuda"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider" />
 
-            <TextView
-                android:id="@+id/txtmision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14dp" />
+        <TextView
+            android:id="@+id/txtAyuda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp"
+            android:text="Realiza tu donativo económico al siguiente número de cuenta: "/>
 
-        </LinearLayout>
-<!-- __________________________SECCION CONTACTO____________________________ -->
+        <TextView
+            android:id="@+id/txtCuentaBancaria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp" />
+
+        <!-- __________________________SECCION CONTACTO____________________________ -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="Contacto"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <View
+            android:id="@+id/dividerContacto"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,8 +152,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -138,8 +173,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -157,24 +190,26 @@
                 android:textSize="14dp" />
 
         </LinearLayout>
-<!-- ___________________________SECCION LOCALIZACION________________________ -->
+        <!-- ___________________________SECCION LOCALIZACION________________________ -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="Localización"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <View
+            android:id="@+id/dividerLocalizacion"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -195,8 +230,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -218,8 +251,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -241,8 +272,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -262,19 +291,19 @@
         </LinearLayout>
 
 
-       <!-- <Button
-            android:id="@+id/mapBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="16dp"
-            android:background="@color/colorPrimary"
-            android:onClick="mapScreen"
-            android:text="@string/donateBtn"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            android:textStyle="bold" />-->
-<!-- ___________________________SECCION ________________________ -->
+        <!-- <Button
+             android:id="@+id/mapBtn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="end"
+             android:layout_margin="16dp"
+             android:background="@color/colorPrimary"
+             android:onClick="mapScreen"
+             android:text="@string/donateBtn"
+             android:textColor="@color/colorAccent"
+             android:textSize="16sp"
+             android:textStyle="bold" />-->
+        <!-- ___________________________SECCION ________________________ -->
 
     </LinearLayout>
 </ScrollView>

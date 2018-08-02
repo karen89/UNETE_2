@@ -373,8 +373,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void showAppointmentsScreen() {
+        //--IDENTIFICAR EL USUARIO ------
+        //--sI ES UNA ASOCIACIÓN SE MANDA A SU PERFIL
+        //--sI ES UN USUARIO GENERAL SE MANDA AL MAIN
         startActivity(new Intent(this, PerfilActivity.class));
-        finish();
+        //finish();
     }
 
     private void showLoginError(String error) {

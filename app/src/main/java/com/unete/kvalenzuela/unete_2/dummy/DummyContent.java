@@ -32,26 +32,26 @@ public class DummyContent {
         }
     }*/
     static {
-        addItem(new DummyItem("1", "Unión y Esperanza Yucateca A.C.",
+        addItem(new DummyItem("1", "UNE A.C.", "Unión y Esperanza Yucateca A.C.",
                 "Pablo Rosete", "uneyayuda@gmail.com","9991547645","ricosuave1",
-                "Fundacion que ayuda a niños Mérida,Yucatán, México.",
-                "Mejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño."));
-        addItem(new DummyItem("2", "Unión y Esperanza Yucateca A.C.",
+                "Fundacion que ayuda a niños Mérida,Yucatán, México. \nMejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño.",
+                "374859"));
+        addItem(new DummyItem("2", "UNE ", "Unión y Esperanza Yucateca A.C.",
                 "Pablo Rosete", "uneyayuda@gmail.com","9991547645","ricosuave1",
-                "Fundacion que ayuda a niños Mérida,Yucatán, México.",
-                "Mejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño."));
-        addItem(new DummyItem("3", "Unión y Esperanza Yucateca A.C.",
+                "Fundacion que ayuda a niños Mérida,Yucatán, México. \nMejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño.",
+                "23465"));
+        addItem(new DummyItem("3", "UNE A.C.", "Unión y Esperanza Yucateca A.C.",
                 "Pablo Rosete", "uneyayuda@gmail.com","9991547645","ricosuave1",
-                "Fundacion que ayuda a niños Mérida,Yucatán, México.",
-                "Mejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño."));
-        addItem(new DummyItem("4", "Unión y Esperanza Yucateca A.C.",
+                "Fundacion que ayuda a niños Mérida,Yucatán, México. \nMejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño.",
+                "35523"));
+        addItem(new DummyItem("4", "UNE", "Unión y Esperanza Yucateca A.C.",
                 "Pablo Rosete", "uneyayuda@gmail.com","9991547645","ricosuave1",
-                "Fundacion que ayuda a niños Mérida,Yucatán, México.",
-                "Mejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño."));
-        addItem(new DummyItem("5", "Unión y Esperanza Yucateca A.C.",
+                "Fundacion que ayuda a niños Mérida,Yucatán, México. \nMejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño.",
+                "65347"));
+        addItem(new DummyItem("5", "UNE A.C.", "Unión y Esperanza Yucateca A.C.",
                 "Pablo Rosete", "uneyayuda@gmail.com","9991547645","ricosuave1",
-                "Fundacion que ayuda a niños Mérida,Yucatán, México.",
-                "Mejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño."));
+                "Fundacion que ayuda a niños Mérida,Yucatán, México. \nMejorar las condiciones de vida en las comunidades rurales de los niños menores de 15 años en el sur del Estado de Yucatán, México. Esto, mediante programas diseñados para mejorar el carácter, autoestima y posibilidades económicas del niño.",
+                "34678"));
     }
 
     private static void addItem(DummyItem item) {
@@ -77,26 +77,27 @@ public class DummyContent {
      */
     public static class DummyItem {
         public final String id;
+        public final String nombreCorto;
         public final String nombreAC;
         public final String responsable;
         public final String email;
         public final String celular;
         public final String contrasena;
         public final String descripcion;
-        public final String mision;
+        public final String cuentaBancaria;
 
-
-        public DummyItem(String id, String nombreAC, String responsable,
+        public DummyItem(String id, String nombreCorto, String nombreAC, String responsable,
                          String email, String celular, String contrasena,
-                         String descripcion, String mision) {
+                         String descripcion, String cuentaBancaria) {
             this.id = id;
+            this.nombreCorto = nombreCorto;
             this.nombreAC = nombreAC;
             this.responsable = responsable;
             this.email = email;
             this.celular = celular;
             this.contrasena = contrasena;
             this.descripcion = descripcion;
-            this.mision = mision;
+            this.cuentaBancaria = cuentaBancaria;
         }
 
         @Override
