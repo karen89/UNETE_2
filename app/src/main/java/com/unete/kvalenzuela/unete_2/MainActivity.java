@@ -84,17 +84,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_ac) {
             Intent intent = new Intent(this, ItemListActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_map) {
-
-        } else if (id == R.id.nav_event) {
-
-        } else if (id == R.id.nav_une) {
-
-        } else if (id == R.id.nav_donate) {
+//        } else if (id == R.id.nav_map) {
+//
+//        } else if (id == R.id.nav_event) {
+//
+//        } else if (id == R.id.nav_une) {
+//
+//        } else if (id == R.id.nav_donate) {
 
         }else if (id == R.id.nav_login) {
             Intent intent = new Intent(this, LoginActivity.class);
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_signup) {
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_comment) {
+//        } else if (id == R.id.nav_comment) {
 
         } else if (id == R.id.nav_about) {
 

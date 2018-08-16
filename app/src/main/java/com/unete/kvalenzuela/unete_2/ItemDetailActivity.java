@@ -25,19 +25,14 @@ public class ItemDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
-                /*Called when the user click "Donar $2" button
-                    Intent intent = new Intent(String.valueOf(DonateUNEActivity.class));
-                    startActivity(intent);*/
-
             }
-        });
+        });*/
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();

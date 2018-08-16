@@ -53,7 +53,7 @@
                 android:weightSum="4">
 
                 <ImageView
-                    android:id="@+id/cat1"
+                    android:id="@+id/animales"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -64,7 +64,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat2"
+                    android:id="@+id/alimentacion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -75,7 +75,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat3"
+                    android:id="@+id/aducacion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -86,7 +86,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat4"
+                    android:id="@+id/medioambiente"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -106,7 +106,7 @@
                 android:weightSum="4">
 
                 <ImageView
-                    android:id="@+id/cat5"
+                    android:id="@+id/salud"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -117,7 +117,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat6"
+                    android:id="@+id/deportiva"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -128,7 +128,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat7"
+                    android:id="@+id/asistencia"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -139,7 +139,7 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/cat8"
+                    android:id="@+id/otros"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

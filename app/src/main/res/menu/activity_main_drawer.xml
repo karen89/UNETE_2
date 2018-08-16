@@ -12,18 +12,18 @@
             android:id="@+id/nav_ac"
             android:icon="@drawable/ic_group_work_black_48dp"
             android:title="Asociaciones" />
-        <item
+        <!--<item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_room_black_48dp"
             android:title="Mapa" />
         <item
             android:id="@+id/nav_event"
             android:icon="@drawable/ic_event_black_48dp"
-            android:title="Eventos" />
+            android:title="Eventos" />-->
 
     </group>
 
-    <item android:title="UNE A.C.">
+ <!--   <item android:title="UNE A.C.">
         <menu>
             <item
                 android:id="@+id/nav_une"
@@ -34,7 +34,7 @@
                 android:icon="@drawable/ic_attach_money_black_48dp"
                 android:title="Donar a UNE" />
         </menu>
-    </item>
+    </item>-->
 
 
     <item android:title="Configuración">
@@ -47,10 +47,10 @@
                 android:id="@+id/nav_signup"
                 android:icon="@drawable/ic_person_add_black_48dp"
                 android:title="Registrarse" />
-            <item
+          <!--  <item
                 android:id="@+id/nav_comment"
                 android:icon="@drawable/ic_comment_black_48dp"
-                android:title="Comentarios" />
+                android:title="Comentarios" />-->
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_help_black_48dp"
