@@ -17,20 +17,20 @@
         android:paddingTop="8dp">
 
         <!-- ___________________________SECCION ASOCIACION________________________ -->
-        <ImageView
+        <!--<ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
-            android:src="@drawable/ic_menu_camera" />
-        <TextView
+            android:src="@drawable/ic_menu_camera" />-->
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Subir Logotipo"
             android:textColor="@color/colorPrimary"
             android:textSize="16dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"/>-->
 
         <TextView
             android:layout_width="match_parent"

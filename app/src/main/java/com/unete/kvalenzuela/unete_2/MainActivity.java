@@ -2,7 +2,7 @@ package com.unete.kvalenzuela.unete_2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.design.internal.SnackbarContentLayout;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
+import com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,23 +28,23 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
-        //MENU
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout); //act_main
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);//MENU
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -70,7 +73,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            if (SessionPrefs.get(this).isLoggedIn()) {
+                System.out.println("Cerrando Sesión");
+                //mostrar notificacion de cerrado
+                SessionPrefs.get(this).logOut();
+            }
             return true;
         }
 
@@ -97,9 +105,17 @@ public class MainActivity extends AppCompatActivity
 //
 //        } else if (id == R.id.nav_donate) {
 
-        }else if (id == R.id.nav_login) {
-            Intent intent = new Intent(this, LoginActivity.class);
+        } else if (id == R.id.nav_perfil) {
+            Intent intent = new Intent(this, PerfilActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_login) {
+            // Redirección al Login
+            if (SessionPrefs.get(this).isLoggedIn()) {
+                //no hace nada
+            } else {
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_signup) {
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
@@ -115,13 +131,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     /*Called when the user click "Donar $2" button*/
-    public void donateScreen(View view){
+    public void donateScreen(View view) {
         Intent intent = new Intent(this, DonateUNEActivity.class);
         startActivity(intent);
     }
 
     /*Called when the user click "Donar $2" button*/
-    public void medioAmbienteCat(View view){
+    public void medioAmbienteCat(View view) {
         //Carga la lista de AC de medio ambiente
         Intent intent = new Intent(this, ItemListActivity.class);
         startActivity(intent);

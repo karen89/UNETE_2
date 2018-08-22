@@ -1,32 +1,30 @@
 package com.unete.kvalenzuela.unete_2.api;
 
-import com.google.gson.annotations.SerializedName;
-
 public class LoginBody {
 
-    @SerializedName("Id_AC")
-    private String userId;
-    private String password;
+   // @SerializedName("Id_AC")
+    private String Rep_Correo;
+    private String Contrasena;
 
-    public LoginBody(String userId, String password) {
-        this.userId = userId;
-        this.password = password;
+    public LoginBody(String Rep_Correo, String Contrasena) {
+        this.Rep_Correo = Rep_Correo;
+        this.Contrasena = Contrasena;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getRep_Correo() {
+        return Rep_Correo;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setRep_Correo(String rep_Correo) {
+        this.Rep_Correo = rep_Correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasena() {
+        return Contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasena(String contrasena) {
+        this.Contrasena = contrasena;
     }
 
 }

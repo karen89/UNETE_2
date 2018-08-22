@@ -24,19 +24,22 @@
     <string name="link_serv_social">Servicio Social</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Usuario / Email</string>
+    <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar Sesión</string>
     <string name="action_sign_in_short">Iniciar Sesión</string>
     <string name="action_sign_up">Registrarse</string>
-    <string name="error_invalid_user">Usuario Incorrecto</string>
+    <string name="error_invalid_user">Rep_Correo Incorrecto</string>
+    <string name="error_invalid_email">Este correo es inválido</string>
     <string name="error_incorrect_password">Contraseña Incorrecta</string>
+    <string name="error_invalid_password">Contraseña muy corta</string>
     <string name="error_field_required">Campo Requerido</string>
+    <string name="error_invalid_field">Campo Incorrecto</string>
     <string name="error_server">Error en el servidor</string>
     <string name="error_network">Conexión de red no disponible</string>
     <string name="error_incorrect_user_id">Número de identificación no registrado</string>
-    <string name="error_invalid_password">Contraseña muy corta</string>
-    <string name="error_invalid_email">Este correo es inválido</string>
+
+
 
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
@@ -143,6 +146,30 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="logout_message_notification_title_template">Logout message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="logout_message_notification_placeholder_text_template">You said %1$s and lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit
+        vel semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+
+    <!-- opciones del menu lateral -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_ac">Asociaciones</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_login">Iniciar Sesión</string>
+    <string name="nav_logout">Cerrar Sesión</string>
+    <string name="nav_signup">Registrar Fundacion</string>
+    <string name="nav_about">Acerca</string>
 
 
 </resources>

@@ -7,11 +7,11 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_48dp"
-            android:title="Inicio" />
+            android:title="@string/nav_home" />
         <item
             android:id="@+id/nav_ac"
             android:icon="@drawable/ic_group_work_black_48dp"
-            android:title="Asociaciones" />
+            android:title="@string/nav_ac" />
         <!--<item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_room_black_48dp"
@@ -40,13 +40,17 @@
     <item android:title="Configuración">
         <menu>
             <item
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/ic_person_outline_black_48dp"
+                android:title="@string/nav_profile" />
+            <item
                 android:id="@+id/nav_login"
                 android:icon="@drawable/ic_person_black_48dp"
-                android:title="Iniciar Sesión" />
+                android:title="@string/nav_login" />
             <item
                 android:id="@+id/nav_signup"
                 android:icon="@drawable/ic_person_add_black_48dp"
-                android:title="Registrarse" />
+                android:title="@string/nav_signup" />
           <!--  <item
                 android:id="@+id/nav_comment"
                 android:icon="@drawable/ic_comment_black_48dp"
@@ -54,7 +58,7 @@
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_help_black_48dp"
-                android:title="Acerca" />
+                android:title="@string/nav_about" />
         </menu>
     </item>
 

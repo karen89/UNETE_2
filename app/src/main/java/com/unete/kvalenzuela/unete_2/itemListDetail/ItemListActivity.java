@@ -1,4 +1,4 @@
-package com.unete.kvalenzuela.unete_2;
+package com.unete.kvalenzuela.unete_2.itemListDetail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.unete.kvalenzuela.unete_2.DonateUNEActivity;
+import com.unete.kvalenzuela.unete_2.R;
 import com.unete.kvalenzuela.unete_2.dummy.DummyContent;
 
 import java.util.List;

@@ -9,28 +9,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +31,7 @@ import com.unete.kvalenzuela.unete_2.api.LoginBody;
 import com.unete.kvalenzuela.unete_2.api.UneteApi;
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -58,25 +46,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "LoginActivity";
 
     private Retrofit mRestAdapter;
     private UneteApi mUneteApi;
 
-    /**
-     * Credenciales de pruebas
-     * TODO: remuévelas cuando vayas a implementar una autenticación real.
-    private static final String DUMMY_USER_ID = "uneyayuda@gmail.com";
-    private static final String DUMMY_PASSWORD = "ricosuave1";
-     */
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    //private UserLoginTask mAuthTask = null;
-
     // UI references.
-    private ImageView mLogoView;
-    private EditText mEmailView;
-    private EditText mPasswordView;
+    //private ImageView mLogoView;
+    private EditText mEmail;
+    private EditText mPassword;
     private TextInputLayout mFloatLabelUserId;
     private TextInputLayout mFloatLabelPassword;
     private View mProgressView;
@@ -86,6 +64,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Ya está logueado
+        /*if (SessionPrefs.get(this).isLoggedIn()) {
+            startActivity(new Intent(this, PerfilActivity.class));
+            //mostrar notificacion
+            finish();
+            return;
+        }*/
+
         setContentView(R.layout.activity_login);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -111,16 +98,16 @@ public class LoginActivity extends AppCompatActivity {
         mUneteApi = mRestAdapter.create(UneteApi.class);
 
         // Set up the login form.
-        mLogoView = (ImageView) findViewById(R.id.image_logo);
-        mEmailView = (EditText) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        //mLogoView = (ImageView) findViewById(R.id.image_logo);
+        mEmail = (EditText) findViewById(R.id.email);
+        mPassword = (EditText) findViewById(R.id.contrasena);
         mFloatLabelUserId = (TextInputLayout) findViewById(R.id.float_label_user_id);
         mFloatLabelPassword = (TextInputLayout) findViewById(R.id.float_label_password);
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
@@ -160,14 +147,17 @@ public class LoginActivity extends AppCompatActivity {
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
+        Log.d(TAG, "LOGIN");
 
         // Reset errors.
         mFloatLabelUserId.setError(null);
         mFloatLabelPassword.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
+
+        System.out.println("TEST// mail: " + email + " pass: " + password);
 
         boolean cancel = false;
         View focusView = null;
@@ -211,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Procesar errores
                     if (!response.isSuccessful()) {
-                        String error;
+                        String error = "Ha ocurrido un error. Contacte al administrador";
                         if (response.errorBody()
                                 .contentType()
                                 .subtype()
@@ -221,7 +211,15 @@ public class LoginActivity extends AppCompatActivity {
                             error = apiError.getMessage();
                             Log.d("LoginActivity", apiError.getDeveloperMessage());
                         } else {
-                            error = response.message();
+                            //error = response.message();
+
+                            try {
+                                // Reportar causas de error no relacionado con la API
+                                Log.d("LoginActivity", response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
                         }
 
                         showLoginError(error);
@@ -245,12 +243,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -290,132 +286,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    /*@Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }*/
-
-    /*@Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-*/
- /*   private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }*/
-
-
-   /* private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }*/
-
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    /*public class UserLoginTask extends AsyncTask<Void, Void, Integer> {
-
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
-
-        @Override
-        protected Integer doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return 4;
-            }
-
-            if (!mEmail.equals(DUMMY_USER_ID)) {
-                return 2;
-            }
-            if (!mPassword.equals(DUMMY_PASSWORD)) {
-                return 3;
-            }
-            return 1;
-
-            // TODO: register the new account here.
-        }
-
-        @Override
-        protected void onPostExecute(final Integer success) {
-            mAuthTask = null;
-            showProgress(false);
-
-
-            switch (success) {
-                case 1:
-                    showAppointmentsScreen();
-                    break;
-                case 2:
-                    showLoginError("Email inválido");
-                case 3:
-                    showLoginError("Contraseña incorrecta");
-                    break;
-                case 4:
-                    showLoginError(getString(R.string.error_server));
-                    break;
-            }
-        }
-
-
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
-    }*/
-
     private void showAppointmentsScreen() {
         //--IDENTIFICAR EL USUARIO ------
         //--sI ES UNA ASOCIACIÓN SE MANDA A SU PERFIL
         //--sI ES UN USUARIO GENERAL SE MANDA AL MAIN
-        startActivity(new Intent(this, PerfilActivity.class));
-        //finish();
+        //startActivity(new Intent(this, PerfilActivity.class));
+        Intent intent = new Intent(this, PerfilActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showLoginError(String error) {

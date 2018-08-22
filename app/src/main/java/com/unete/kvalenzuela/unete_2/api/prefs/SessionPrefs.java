@@ -71,6 +71,7 @@ public class SessionPrefs {
     public void logOut(){
         mIsLoggedIn = false;
         SharedPreferences.Editor editor = mPrefs.edit();
+        editor.clear();
         editor.putString(PREF_AC_ID, null);
         editor.putString(PREF_AC_RAZONSOCIAL, null);
         editor.putString(PREF_AC_REPNOMBRE, null);
