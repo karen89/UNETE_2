@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -60,10 +62,19 @@ public class LoginActivity extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
     private Button mEmailSignInButton;
+    private TextView _signupLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }*/
 
         // Ya está logueado
         /*if (SessionPrefs.get(this).isLoggedIn()) {
@@ -104,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
         mFloatLabelUserId = (TextInputLayout) findViewById(R.id.float_label_user_id);
         mFloatLabelPassword = (TextInputLayout) findViewById(R.id.float_label_password);
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        _signupLink = findViewById(R.id.link_signup);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
@@ -138,7 +150,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        _signupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Finish the login screen and return to the signup activity
+                registrarse();
+                finish();
+            }
+        });
 
+    }
+
+    private void registrarse() {
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 
     /**

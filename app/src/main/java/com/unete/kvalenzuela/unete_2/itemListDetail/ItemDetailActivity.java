@@ -63,7 +63,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {  //accion settings
         int id = item.getItemId();
         if (id == android.R.id.home) {
             // This ID represents the Home or Up button. In the case of this

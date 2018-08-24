@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -46,7 +47,7 @@ public class ItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        //--QUE PONGO COMO BOTÓN?? O LO QUITO MEJOR----
+        /*//--QUE PONGO COMO BOTÓN?? O LO QUITO MEJOR----
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,13 @@ public class ItemListActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
+
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
@@ -73,16 +80,17 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
     }
 
+    //TODO: SERIA LA CLASE PARA LLAMAR LOS DATOS DE LAS ac DE LA bd
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ItemListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<DummyContent.DummyItem> mValues; //LISTA DE AC
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag(); //
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
@@ -91,11 +99,10 @@ public class ItemListActivity extends AppCompatActivity {
                     mParentActivity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.item_detail_container, fragment)
                             .commit();
-                } else {
+                } else { //AQUI MANDA EL ID DEL ITEM PARA CARGAR LA INFO EN EL DETALLE
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
                     intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id);
-
                     context.startActivity(intent);
                 }
             }
@@ -146,9 +153,9 @@ public class ItemListActivity extends AppCompatActivity {
         }
     }
 
-    /*Called when the user click "Donar $2" button*/
+    /*Called when the user click "Donar $2" button*//*
     public void donateScreen(View view){
         Intent intent = new Intent(this, DonateUNEActivity.class);
         startActivity(intent);
-    }
+    }*/
 }

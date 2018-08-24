@@ -11,6 +11,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.unete.kvalenzuela.unete_2.LoginActivity">
 
+    <!--<android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay" >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>-->
+
     <!-- Login progress -->
     <ProgressBar
         android:id="@+id/login_progress"
@@ -81,11 +96,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
                 android:background="@color/colorPrimary"/>
 
+            <TextView
+                android:id="@+id/link_signup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="¿No tienes cuenta?, Registrarse"
+                android:textSize="16dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

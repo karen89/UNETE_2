@@ -1,154 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SignupActivity">
 
-    <LinearLayout
+   <!-- <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <!--<ImageView
-            android:src="@mipmap/logo_une_sinfondo"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_m
-            arginBottom="24dp"
-            android:layout_gravity="center_horizontal" />-->
-}    <!-- Login progress -->
-        <ProgressBar
-            android:id="@+id/signup_progress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone" />
-
-        <ScrollView
-            android:id="@+id/signup_form"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <LinearLayout
-                android:id="@+id/linear_signup_form"
+    </android.support.design.widget.AppBarLayout>
+-->
+    <!--<ImageView
+        android:src="@mipmap/logo_une_sinfondo"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_m
+        arginBottom="24dp"
+        android:layout_gravity="center_horizontal" />-->
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/signup_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/signup_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linear_signup_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Name AC Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_razon"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_name_ac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre de la AC"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Responsable Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_responsable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_responsable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del Responsable"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- mobile number -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_celular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_celular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número Celular"
+                    android:inputType="phone" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Email Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Password Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Password Re-enter Label -->
+            <!-- <android.support.design.widget.TextInputLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginBottom="8dp"
+                 android:layout_marginTop="8dp">
+
+                 <EditText
+                     android:id="@+id/input_reEnterPassword"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Reingresa Contraseña"
+                     android:inputType="textPassword" />
+             </android.support.design.widget.TextInputLayout>-->
+
+            <!-- Signup Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_signup"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/colorPrimary"
+                android:padding="12dp"
+                android:text="Crear cuenta"
+                android:textColor="@color/colorAccent" />
 
-                <!-- Name AC Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/float_label_razon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <EditText
-                        android:id="@+id/input_name_ac"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nombre de la AC"
-                        android:inputType="text" />
-                </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/link_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="¿Ya tienes cuenta?, Inicia Sesión"
+                android:textSize="16dp" />
 
-                <!-- Responsable Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/float_label_responsable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                    <EditText
-                        android:id="@+id/input_responsable"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nombre del Responsable"
-                        android:inputType="text"/>
-                </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
 
-                <!-- mobile number -->
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/float_label_celular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                    <EditText
-                        android:id="@+id/input_celular"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Número Celular"
-                        android:inputType="phone"/>
-                </android.support.design.widget.TextInputLayout>
 
-                <!--  Email Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/float_label_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                    <EditText
-                        android:id="@+id/input_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress" />
-                </android.support.design.widget.TextInputLayout>
-
-                <!-- Password Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/float_label_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                    <EditText
-                        android:id="@+id/input_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Contraseña"
-                        android:inputType="textPassword"/>
-                </android.support.design.widget.TextInputLayout>
-
-                <!-- Password Re-enter Label -->
-               <!-- <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp">
-
-                    <EditText
-                        android:id="@+id/input_reEnterPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Reingresa Contraseña"
-                        android:inputType="textPassword" />
-                </android.support.design.widget.TextInputLayout>-->
-
-                <!-- Signup Button -->
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btn_signup"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@color/colorPrimary"
-                    android:padding="12dp"
-                    android:text="Crear cuenta"
-                    android:textColor="@color/colorAccent" />
-
-                <TextView
-                    android:id="@+id/link_login"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:gravity="center"
-                    android:text="Ya tienes cuenta? Inicia Sesión"
-                    android:textSize="16dip" />
-
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
-
-</ScrollView>
 
 
