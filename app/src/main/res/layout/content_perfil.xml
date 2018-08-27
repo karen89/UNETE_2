@@ -59,10 +59,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Razón Social"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Nombre corto Label -->
+        <!--&lt;!&ndash; Nombre corto Label &ndash;&gt;
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Nombre corto"
                 android:inputType="textPersonName" />
-        </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>-->
 
         <!-- Descripción Label -->
         <android.support.design.widget.TextInputLayout
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descripción"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- ___________________________SECCION LOCALIZACION________________________ -->
@@ -125,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Calle"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- numero Label -->
@@ -138,7 +138,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Número"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- cruz1 Label -->
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cruzamiento 1"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- cruz2 Label -->
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cruzamiento 2"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Colonia"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- cp corto Label -->
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Código Postal"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -216,7 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Localidad"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- estado corto Label -->
@@ -229,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Estado"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -277,10 +277,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo Electrónico"
-                android:inputType="textPersonName" />
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
-        <!-- celulae Label -->
+        <!-- celular Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Celular"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- __________________________SECCION CUENTA____________________________ -->
@@ -322,7 +322,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cuenta Bancaria"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <Button

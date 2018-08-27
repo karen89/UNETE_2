@@ -217,7 +217,7 @@ public class LoginActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            Call<Asociacion> loginCall = mUneteApi.login(new LoginBody(email, password));
+            Call<Asociacion> loginCall = mUneteApi.login(new LoginBody(email, password)); //paso de parametros a API
             loginCall.enqueue(new Callback<Asociacion>() {
                 @Override
                 public void onResponse(Call<Asociacion> call, Response<Asociacion> response) {
