@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_perfil">
 
     <LinearLayout
+        android:id="@+id/form_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -33,6 +34,7 @@
             android:layout_gravity="center"/>-->
 
         <TextView
+            android:id="@+id/detalle_asociacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -50,6 +52,7 @@
 
         <!-- Razón social Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_razon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -78,6 +81,7 @@
 
         <!-- Descripción Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -92,6 +96,7 @@
 
         <!-- ___________________________SECCION LOCALIZACION________________________ -->
         <TextView
+            android:id="@+id/localizacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -115,8 +120,9 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="4dp">
 
-            <!-- calle social Label -->
+            <!-- calle Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_calle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -130,6 +136,7 @@
 
             <!-- numero Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_numero"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -143,6 +150,7 @@
 
             <!-- cruz1 Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_cruz1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -156,6 +164,7 @@
 
             <!-- cruz2 Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_cruz2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -171,6 +180,7 @@
 
         <!-- colonia Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_colonia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -185,6 +195,7 @@
 
         <!-- cp corto Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_cp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -197,7 +208,6 @@
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,11 +218,12 @@
 
             <!-- localidad social Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_localidad"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <EditText
-                    android:id="@+id/input_Localidad"
+                    android:id="@+id/input_localidad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Localidad"
@@ -221,6 +232,7 @@
 
             <!-- estado corto Label -->
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_label_estado"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -237,6 +249,7 @@
 
         <!-- __________________________SECCION CONTACTO____________________________ -->
         <TextView
+            android:id="@+id/contacto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -254,6 +267,7 @@
 
         <!-- responsable Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_responsable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -266,14 +280,15 @@
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
-        <!-- correo corto Label -->
+        <!-- correo Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_correo_perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp">
             <EditText
-                android:id="@+id/input_correo"
+                android:id="@+id/input_correo_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo Electrónico"
@@ -282,12 +297,13 @@
 
         <!-- celular Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_celular_perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp">
             <EditText
-                android:id="@+id/input_celular"
+                android:id="@+id/input_celular_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Celular"
@@ -296,6 +312,7 @@
 
         <!-- __________________________SECCION CUENTA____________________________ -->
         <TextView
+            android:id="@+id/cuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -313,12 +330,13 @@
 
         <!-- cuenta Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_cuenta_perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp">
             <EditText
-                android:id="@+id/input_cuenta"
+                android:id="@+id/input_cuenta_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cuenta Bancaria"
@@ -326,7 +344,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/update_profile"
+            android:id="@+id/btn_update_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

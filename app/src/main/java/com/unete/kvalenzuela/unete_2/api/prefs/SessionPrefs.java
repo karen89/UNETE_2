@@ -6,6 +6,8 @@ import android.text.TextUtils;
 
 import com.unete.kvalenzuela.unete_2.api.Asociacion;
 
+import java.util.HashMap;
+
 public class SessionPrefs {
     public static final String PREFS_NAME = "UNETE_PREFS";
     public static final String PREF_AC_ID = "PREF_USER_ID";
@@ -86,6 +88,47 @@ public class SessionPrefs {
         editor.putInt(PREF_AC_SUBCATEGORIA_ID, 0);
         editor.putString(PREF_AC_TOKEN, null);
         editor.apply();
+    }
+
+    /**
+     * Get stored session data
+     * */
+    public HashMap<String, String> getUserDetails(){
+        HashMap<String, String> user = new HashMap<String, String>();
+
+        user.put(PREF_AC_RAZONSOCIAL, mPrefs.getString(PREF_AC_RAZONSOCIAL, null));
+        user.put(PREF_AC_REPNOMBRE, mPrefs.getString(PREF_AC_REPNOMBRE, null));
+        user.put(PREF_AC_REPCEL, mPrefs.getString(PREF_AC_REPCEL, null));
+        user.put(PREF_AC_REPCORREO, mPrefs.getString(PREF_AC_REPCORREO, null));
+        user.put(PREF_AC_DESCRIPCION, mPrefs.getString(PREF_AC_DESCRIPCION, null));
+        user.put(PREF_AC_CUENTABANCARIA, mPrefs.getString(PREF_AC_CUENTABANCARIA, null));
+        user.put(PREF_AC_SUBCATEGORIA_ID, mPrefs.getString(PREF_AC_SUBCATEGORIA_ID, null));
+
+        // return user
+        return user;
+    }
+
+    public void updateAffiliate(Asociacion affiliate) {
+        //TODO: editar para los campos del perfil
+        if (affiliate != null) {
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putInt(PREF_AC_ID, affiliate.getId_AC());
+            editor.putString(PREF_AC_RAZONSOCIAL, affiliate.getRazon_Social());
+            editor.putString(PREF_AC_REPNOMBRE, affiliate.getRep_Nombre());
+            editor.putString(PREF_AC_REPCEL, affiliate.getRep_Cel());
+            editor.putString(PREF_AC_REPCORREO, affiliate.getRep_Correo());
+            editor.putString(PREF_AC_USUARIO, affiliate.getUsuario());
+            editor.putString(PREF_AC_SLOGAN, affiliate.getSlogan());
+            editor.putString(PREF_AC_DESCRIPCION, affiliate.getDescripcion());
+            editor.putString(PREF_AC_LOGOTIPO, affiliate.getLogotipo());
+            editor.putString(PREF_AC_ESTADO, affiliate.getEstado());
+            editor.putInt(PREF_AC_CUENTABANCARIA, affiliate.getCuentaBancaria());
+            editor.putInt(PREF_AC_SUBCATEGORIA_ID, affiliate.getSubcategoria_Id_SubCat());
+            editor.putString(PREF_AC_TOKEN, affiliate.getToken());
+            editor.apply();
+
+            mIsLoggedIn = true;
+        }
     }
 
 }

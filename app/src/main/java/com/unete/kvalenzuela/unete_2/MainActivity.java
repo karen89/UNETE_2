@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity
                 System.out.println("Cerrando Sesión");
                 //TODO: mostrar notificacion de cerrado
                 SessionPrefs.get(this).logOut();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
             } else { //termina la aplicación
                 finish();
                 System.exit(0);
@@ -118,8 +120,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_login) {
             // Redirección al Login
             if (SessionPrefs.get(this).isLoggedIn()) {
-                //no hace nada
+                //Redirige a perfil
                 //TODO: mensaje: "Estas logueado!"
+                Intent intent = new Intent(this, PerfilActivity.class);
+                startActivity(intent);
             } else {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
