@@ -216,7 +216,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="4dp">
 
-            <!-- localidad social Label -->
+            <!-- municipio social Label -->
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/float_label_localidad"
                 android:layout_width="0dp"
@@ -280,6 +280,21 @@
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- celular Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/float_label_celular_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp">
+            <EditText
+                android:id="@+id/input_celular_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Celular"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
         <!-- correo Label -->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/float_label_correo_perfil"
@@ -293,21 +308,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Correo Electrónico"
                 android:inputType="textEmailAddress" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- celular Label -->
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/float_label_celular_perfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="8dp">
-            <EditText
-                android:id="@+id/input_celular_perfil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Celular"
-                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- __________________________SECCION CUENTA____________________________ -->
@@ -340,7 +340,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cuenta Bancaria"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <Button

@@ -3,19 +3,14 @@ package com.unete.kvalenzuela.unete_2;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -44,11 +39,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignupActivity extends AppCompatActivity {
+    private static final String TAG = "SignupActivity";
 
     private Retrofit mRestAdapter;
     private UneteApi mUneteApi;
-
-    private static final String TAG = "SignupActivity";
 
     //UI references
     private View mProgressView;
@@ -66,22 +60,10 @@ public class SignupActivity extends AppCompatActivity {
     private Button mSignupBtn;
     private TextView _loginLink;
 
-    /*@InjectView(R.id.input_name_ac)
-    EditText _nameText;
-    @InjectView(R.id.input_email)
-    EditText _emailText;
-    @InjectView(R.id.input_password)
-    EditText _passwordText;
-    @InjectView(R.id.btn_signup)
-    Button _signupButton;
-   // @InjectView(R.id.link_login)
-    TextView _loginLink;*/
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        //ButterKnife.inject(this);
 
        /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,7 +95,7 @@ public class SignupActivity extends AppCompatActivity {
         // Crear conexión a la API
         mUneteApi = mRestAdapter.create(UneteApi.class);
 
-        // Set up the login form.
+        // Set up login form.
         mProgressView = findViewById(R.id.signup_progress);
         mSignupForm = findViewById(R.id.signup_form);
         mFloatLabelRazon = findViewById(R.id.float_label_razon);
@@ -136,43 +118,31 @@ public class SignupActivity extends AppCompatActivity {
                     showSignupError(getString(R.string.error_network));
                     return;
                 }
-                signup();
+                attemptSignup();
             }
         });
 
         _loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Finish the registration screen and return to the Login activity
-               /* if (SessionPrefs.get(this).isLoggedIn()) { //camiar por una funcion
-                    //no hace nada
-                } else {*/
-                    loguearse();
-                    finish();
-               // }
+                goLogin();
+                finish();
             }
         });
-    }
-
-    private void loguearse() {
-        if (!SessionPrefs.get(this).isLoggedIn()) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-    }
+    }//END OnCreate
 
     private boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnected();    }
+        return activeNetwork != null && activeNetwork.isConnected();
+    }
 
     private void showSignupError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
-    public void signup() {
+    private void attemptSignup() {
         Log.d(TAG, "SIGNUP");
 
         // Reset errors.
@@ -191,7 +161,7 @@ public class SignupActivity extends AppCompatActivity {
         boolean valid = true;
         View focusView = null;
 
-        // Check for a valid razon address.
+        // Check for a valid RAZON_SOCIAL.
         if (TextUtils.isEmpty(razon)) {
             mFloatLabelRazon.setError(getString(R.string.error_field_required));
             valid = false;
@@ -202,7 +172,7 @@ public class SignupActivity extends AppCompatActivity {
             focusView = mFloatLabelRazon;
         }
 
-        // Check for a valid responsable address.
+        // Check for a valid RESP_NOMBRE.
         if (TextUtils.isEmpty(responsable)) {
             mFloatLabelResponsable.setError(getString(R.string.error_field_required));
             valid = false;
@@ -213,7 +183,7 @@ public class SignupActivity extends AppCompatActivity {
             focusView = mFloatLabelResponsable;
         }
 
-        // Check for a valid Celular address.
+        // Check for a valid RESP_CEL.
         if (TextUtils.isEmpty(celular)) {
             mFloatLabelCelular.setError(getString(R.string.error_field_required));
             valid = false;
@@ -224,7 +194,7 @@ public class SignupActivity extends AppCompatActivity {
             focusView = mFloatLabelCelular;
         }
 
-        // Check for a valid email address.
+        // Check for a valid RESP_CORREO.
         if (TextUtils.isEmpty(email)) {
             mFloatLabelEmail.setError(getString(R.string.error_field_required));
             valid = false;
@@ -235,7 +205,7 @@ public class SignupActivity extends AppCompatActivity {
             focusView = mFloatLabelEmail;
         }
 
-        // Check for a valid password, if the user entered one.
+        // Check for a valid PASSWORD.
         if (TextUtils.isEmpty(password)) {
             mFloatLabelPassword.setError(getString(R.string.error_field_required));
             valid = false;
@@ -273,27 +243,23 @@ public class SignupActivity extends AppCompatActivity {
                             Log.d("SignupActivity", apiError.getDeveloperMessage());
                         } else {
                             //error = response.message();
-
                             try {
                                 // Reportar causas de error no relacionado con la API
                                 Log.d("SignupActivity", response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
                         }
 
                         showSignupError(error);
                         return;
                     }
 
-                    // Guardar afiliado en preferencias --se aplico en login
-                    //SessionPrefs.get(LoginActivity.this).saveAffiliate(response.body());
+                    //TODO:Show successful Signup message
+                    Toast.makeText(getBaseContext(), "Registro Exitoso", Toast.LENGTH_LONG).show();
 
-                    //Setea los campos a vacios
-                    reiniciarSignup();
-                    //mostrar notificacion de registrado
-
+                    //TODO: Show Main
+                    showMainScreen();
                 }
 
                 @Override
@@ -303,157 +269,16 @@ public class SignupActivity extends AppCompatActivity {
                 }
             });
         }
+    }//END attempSignup
 
-        /*mSignupBtn.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
-                R.style.ThemeOverlay_AppCompat_Dark);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creando cuenta...");
-        progressDialog.show();
-
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        // TODO: Implement your own signup logic here.
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);*/
+    private void goLogin() {
+        if (!SessionPrefs.get(this).isLoggedIn()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
-    private void reiniciarSignup() {
-        mNameAC.setText("");
-        mResponsable.setText("");
-        mCelular.setText("");
-        mEmail.setText("");
-        mPassword.setText("");
-    }
-
-    public void onSignupSuccess() {
-        mSignupBtn.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
-
-    public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Signup failed", Toast.LENGTH_LONG).show();
-
-        mSignupBtn.setEnabled(false);
-    }
-
-    /*public boolean validate() {
-        // Reset errors.
-        mFloatLabelRazon.setError(null);
-        mFloatLabelResponsable.setError(null);
-        mFloatLabelCelular.setError(null);
-        mFloatLabelEmail.setError(null);
-        mFloatLabelPassword.setError(null);
-
-        String razon = mNameAC.getText().toString();
-        String responsable = mResponsable.getText().toString();
-        String celular = mCelular.getText().toString();
-        String email = mEmail.getText().toString();
-        String password = mPassword.getText().toString();
-
-        boolean valid = true;
-        View focusView = null;
-
-        // Check for a valid razon address.
-        if (TextUtils.isEmpty(razon)) {
-            mFloatLabelRazon.setError(getString(R.string.error_field_required));
-            valid = false;
-            focusView = mFloatLabelRazon;
-        } else if (razon.length() < 5) {
-            mFloatLabelRazon.setError(getString(R.string.error_invalid_field));
-            valid = false;
-            focusView = mFloatLabelRazon;
-        }
-
-        // Check for a valid responsable address.
-        if (TextUtils.isEmpty(responsable)) {
-            mFloatLabelResponsable.setError(getString(R.string.error_field_required));
-            valid = false;
-            focusView = mFloatLabelResponsable;
-        } else if (responsable.length() < 5) {
-            mFloatLabelResponsable.setError(getString(R.string.error_invalid_field));
-            valid = false;
-            focusView = mFloatLabelResponsable;
-        }
-
-        // Check for a valid Celular address.
-        if (TextUtils.isEmpty(celular)) {
-            mFloatLabelCelular.setError(getString(R.string.error_field_required));
-            valid = false;
-            focusView = mFloatLabelCelular;
-        } else if (celular.length() < 10) {
-            mFloatLabelCelular.setError(getString(R.string.error_invalid_field));
-            valid = false;
-            focusView = mFloatLabelCelular;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mFloatLabelEmail.setError(getString(R.string.error_field_required));
-            valid = false;
-            focusView = mFloatLabelEmail;
-        } else if (email.contains("@")) {
-            mFloatLabelEmail.setError(getString(R.string.error_invalid_email));
-            valid = false;
-            focusView = mFloatLabelEmail;
-        }
-
-        // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password)) {
-            mFloatLabelPassword.setError(getString(R.string.error_field_required));
-            valid = false;
-            focusView = mFloatLabelPassword;
-        } else if (password.length() < 4) {
-            mFloatLabelPassword.setError(getString(R.string.error_invalid_password));
-            valid = false;
-            focusView = mFloatLabelPassword;
-        }
-
-        *//*if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("Más de 3 caracteres");
-            valid = false;
-        } else {
-            _nameText.setError(null);
-        }
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Ingresa correo válido");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Entre 4 y 10 caracteres alfanuméricos");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-*//*
-        if (!valid) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        }
-        return valid;
-    }*/
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
+    /**Shows the progress UI and hides the login form.*/
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -486,4 +311,10 @@ public class SignupActivity extends AppCompatActivity {
             mSignupForm.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
+
+    private void showMainScreen() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
 }

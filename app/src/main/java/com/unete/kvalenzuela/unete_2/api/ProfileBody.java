@@ -1,8 +1,7 @@
 package com.unete.kvalenzuela.unete_2.api;
 
-public class Asociacion {
+public class ProfileBody {
 
-    private int Id_AC;
     private String Razon_Social;
     private String Descripcion;
 
@@ -11,27 +10,20 @@ public class Asociacion {
     private String Cruzam_1;
     private String Cruzam_2;
     private String Colonia;
-    private int CP;
+    private String CP;
     private String Municipio;
     private String Estado;
 
     private String Rep_Nombre;
     private String Rep_Cel;
     private String Rep_Correo;
-    private String Contrasena;
-
-    private String Logotipo;
-    private String Estatus;
-    private int CuentaBancaria;
-    private int Subcategoria_Id_SubCat;
+    private String CuentaBancaria;
     private String Token;
 
-    public Asociacion(int id_AC, String razon_Social, String descripcion, String calle,
-                      String numero, String cruzam_1, String cruzam_2, String colonia, int CP,
-                      String municipio, String estado, String rep_Nombre, String rep_Cel,
-                      String rep_Correo, String contrasena, String logotipo, String estatus,
-                      int cuentaBancaria, int subcategoria_Id_SubCat, String token) {
-        Id_AC = id_AC;
+    public ProfileBody(String razon_Social, String descripcion, String calle, String numero,
+                       String cruzam_1, String cruzam_2, String colonia, String CP,
+                       String municipio, String estado, String rep_Nombre, String rep_Cel,
+                       String rep_Correo, String cuentaBancaria, String token) {
         Razon_Social = razon_Social;
         Descripcion = descripcion;
         Calle = calle;
@@ -45,20 +37,8 @@ public class Asociacion {
         Rep_Nombre = rep_Nombre;
         Rep_Cel = rep_Cel;
         Rep_Correo = rep_Correo;
-        Contrasena = contrasena;
-        Logotipo = logotipo;
-        Estatus = estatus;
         CuentaBancaria = cuentaBancaria;
-        Subcategoria_Id_SubCat = subcategoria_Id_SubCat;
         Token = token;
-    }
-
-    public int getId_AC() {
-        return Id_AC;
-    }
-
-    public void setId_AC(int id_AC) {
-        Id_AC = id_AC;
     }
 
     public String getRazon_Social() {
@@ -117,11 +97,11 @@ public class Asociacion {
         Colonia = colonia;
     }
 
-    public int getCP() {
+    public String getCP() {
         return CP;
     }
 
-    public void setCP(int CP) {
+    public void setCP(String CP) {
         this.CP = CP;
     }
 
@@ -165,44 +145,12 @@ public class Asociacion {
         Rep_Correo = rep_Correo;
     }
 
-    public String getContrasena() {
-        return Contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
-    }
-
-    public String getLogotipo() {
-        return Logotipo;
-    }
-
-    public void setLogotipo(String logotipo) {
-        Logotipo = logotipo;
-    }
-
-    public String getEstatus() {
-        return Estatus;
-    }
-
-    public void setEstatus(String estatus) {
-        Estatus = estatus;
-    }
-
-    public int getCuentaBancaria() {
+    public String getCuentaBancaria() {
         return CuentaBancaria;
     }
 
-    public void setCuentaBancaria(int cuentaBancaria) {
+    public void setCuentaBancaria(String cuentaBancaria) {
         CuentaBancaria = cuentaBancaria;
-    }
-
-    public int getSubcategoria_Id_SubCat() {
-        return Subcategoria_Id_SubCat;
-    }
-
-    public void setSubcategoria_Id_SubCat(int subcategoria_Id_SubCat) {
-        Subcategoria_Id_SubCat = subcategoria_Id_SubCat;
     }
 
     public String getToken() {

@@ -3,6 +3,7 @@ package com.unete.kvalenzuela.unete_2.api;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface UneteApi {
 
@@ -20,4 +21,6 @@ public interface UneteApi {
     @POST("asociacion/register")
     Call<Asociacion> signup(@Body SignupBody signupBody);
 
+    @PUT("asociacion/update")
+    Call<Asociacion> update(@Body ProfileBody profileBody);
 }

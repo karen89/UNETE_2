@@ -8,18 +8,14 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout mFloatLabelPassword;
     private View mProgressView;
     private View mLoginFormView;
-    private Button mEmailSignInButton;
+    private Button mLoginButton;
     private TextView _signupLink;
 
     @Override
@@ -74,14 +70,6 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-        }*/
-
-        // Ya está logueado
-        /*if (SessionPrefs.get(this).isLoggedIn()) {
-            startActivity(new Intent(this, PerfilActivity.class));
-            //mostrar notificacion
-            finish();
-            return;
         }*/
 
         setContentView(R.layout.activity_login);
@@ -114,12 +102,12 @@ public class LoginActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.contrasena);
         mFloatLabelUserId = (TextInputLayout) findViewById(R.id.float_label_user_id);
         mFloatLabelPassword = (TextInputLayout) findViewById(R.id.float_label_password);
-        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mLoginButton = (Button) findViewById(R.id.email_sign_in_button);
         _signupLink = findViewById(R.id.link_signup);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+ /*       mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
@@ -134,18 +122,16 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
 
 
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        mLoginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (!isOnline()) {
                     showLoginError(getString(R.string.error_network));
                     return;
                 }
-
                 attemptLogin();
             }
         });
@@ -153,24 +139,23 @@ public class LoginActivity extends AppCompatActivity {
         _signupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Finish the login screen and return to the signup activity
-                registrarse();
+                goSignup();
                 finish();
             }
         });
+    }//END OnCreate
 
+    private boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnected();
     }
 
-    private void registrarse() {
-        Intent intent = new Intent(this, SignupActivity.class);
-        startActivity(intent);
+    private void showLoginError(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
     private void attemptLogin() {
         Log.d(TAG, "LOGIN");
 
@@ -187,23 +172,23 @@ public class LoginActivity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
+        // Check for a valid PASSWORD.
         if (TextUtils.isEmpty(password)) {
             mFloatLabelPassword.setError(getString(R.string.error_field_required));
             focusView = mFloatLabelPassword;
             cancel = true;
-        } else if (!isPasswordValid(password)) {
+        } else if (password.length() < 5) {
             mFloatLabelPassword.setError(getString(R.string.error_invalid_password));
             focusView = mFloatLabelPassword;
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // Check for a valid MAIL.
         if (TextUtils.isEmpty(email)) {
             mFloatLabelUserId.setError(getString(R.string.error_field_required));
             focusView = mFloatLabelUserId;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (!email.contains("@")) {
             mFloatLabelUserId.setError(getString(R.string.error_invalid_email));
             focusView = mFloatLabelUserId;
             cancel = true;
@@ -237,25 +222,23 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("LoginActivity", apiError.getDeveloperMessage());
                         } else {
                             //error = response.message();
-
                             try {
                                 // Reportar causas de error no relacionado con la API
                                 Log.d("LoginActivity", response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
                         }
 
                         showLoginError(error);
                         return;
                     }
 
-                    // Guardar afiliado en preferencias
-                    SessionPrefs.get(LoginActivity.this).saveAffiliate(response.body());
+                    //Save AC at PREFs
+                    SessionPrefs.get(LoginActivity.this).createSession(response.body());
 
-                    // Ir a la citas médicas
-                    showAppointmentsScreen();
+                    //Show Profile
+                    showProfileScreen();
                 }
 
                 @Override
@@ -265,19 +248,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+    }//END attempLogin
+
+    private void goSignup() {
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 
-    private boolean isEmailValid(String email) {
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        return password.length() > 4;
-    }
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
+    /**Shows the progress UI and hides the login form.*/
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -311,26 +289,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void showAppointmentsScreen() {
-        //--IDENTIFICAR EL USUARIO ------
-        //--sI ES UNA ASOCIACIÓN SE MANDA A SU PERFIL
-        //--sI ES UN USUARIO GENERAL SE MANDA AL MAIN
-        //startActivity(new Intent(this, PerfilActivity.class));
-        Intent intent = new Intent(this, PerfilActivity.class);
-        startActivity(intent);
+    private void showProfileScreen() {
+        //TODO: FUTURE:--IDENTIFICAR EL USUARIO ------
+        //TODO: FUTURE:--sI ES UNA ASOCIACIÓN SE MANDA A SU PERFIL
+        //TODO: FUTURE:--sI ES UN USUARIO GENERAL SE MANDA AL MAIN
+        startActivity(new Intent(this, PerfilActivity.class));
+        //Intent intent = new Intent(this, PerfilActivity.class);
+        //startActivity(intent);
         finish();
     }
 
-    private void showLoginError(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
-    }
-
-    private boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnected();
-    }
 }
-
