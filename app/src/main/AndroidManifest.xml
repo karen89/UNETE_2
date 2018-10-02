@@ -29,14 +29,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-
-            android:parentActivityName=".MainActivity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -47,19 +44,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".itemListDetail.ItemListActivity"
             android:label="@string/title_item_list"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".itemListDetail.ItemDetailActivity"
             android:label="@string/title_item_detail"
@@ -69,36 +62,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity" />
         </activity>
-
-
         <activity
             android:name=".PerfilActivity"
             android:label="@string/title_activity_perfil"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-
-
-        <activity android:name=".DonateUNEActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" >
+        <activity
+            android:name=".DonateUNEActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-
-
-        <activity android:name=".SignupActivity"
-
-            android:parentActivityName=".MainActivity" >
+        <activity
+            android:name=".SignupActivity"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -115,12 +102,14 @@
 
         <activity
             android:name=".MapsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_maps"  android:parentActivityName=".MainActivity" >
+            android:label="@string/title_activity_maps"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.MainActivity"/>
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
