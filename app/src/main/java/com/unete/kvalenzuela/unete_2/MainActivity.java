@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
+import com.unete.kvalenzuela.unete_2.api.ui.CategoryListActivity;
 import com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -104,7 +105,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_ac) {
-            Intent intent = new Intent(this, ItemListActivity.class);
+            Intent intent = new Intent(this, CategoryListActivity.class);
+            intent.putExtra("Categoria_Id_Cat", "0");
             startActivity(intent);
 //        } else if (id == R.id.nav_map) {
 //
@@ -154,11 +156,76 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    /*Called when the user click "Donar $2" button*/
-    public void medioAmbienteCat(View view) {
-        //Carga la lista de AC de medio ambiente
+    /*Called when the user click "" button*/
+    public void animalsCat(View view) {
+        //Carga la lista de AC de animales ID=1
+        Intent intent = new Intent(this, CategoryListActivity.class);
+        String id = "1";
+
+        intent.putExtra("Categoria_Id_Cat", id);
+        //intent.putExtra("Categoria_Id_Cat", "1");
+        //try{
+        startActivity(intent);
+        //    System.out.println("Logró ejecutarse");
+        //}catch (Exception e){
+        //    System.out.println(e.getMessage());
+        //}
+    }
+
+    /*Called when the user click "" button*/
+    public void alimentationCat(View view) {
+        //Carga la lista de AC de alimentacion ID=2
         Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "2");
         startActivity(intent);
     }
 
+
+    /*Called when the user click "" button*/
+    public void educationCat(View view) {
+        //Carga la lista de AC de educacion ID=3
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "3");
+        startActivity(intent);
+    }
+
+    /*Called when the user click "" button*/
+    public void medioAmbienteCat(View view) {
+        //Carga la lista de AC de medio ambiente ID=4
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "4");
+        startActivity(intent);
+    }
+
+    /*Called when the user click "" button*/
+    public void healthCat(View view) {
+        //Carga la lista de AC de salud ID=5
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "5");
+        startActivity(intent);
+    }
+
+    /*Called when the user click "" button*/
+    public void sportsCat(View view) {
+        //Carga la lista de AC de deportivas ID=6
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "6");
+        startActivity(intent);
+    }
+
+    /*Called when the user click "" button*/
+    public void asistenciaCat(View view) {
+        //Carga la lista de AC de asistencia social ID=7
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "7");
+        startActivity(intent);
+    }
+
+    /*Called when the user click "" button*/
+    public void otherCat(View view) {
+        //Carga la lista de AC de otros ID=8
+        Intent intent = new Intent(this, ItemListActivity.class);
+        intent.putExtra("Categoria_Id_Cat", "8");
+        startActivity(intent);
+    }
 }

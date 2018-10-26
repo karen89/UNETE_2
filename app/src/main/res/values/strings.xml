@@ -169,6 +169,7 @@
     <string name="nav_logout">Cerrar Sesión</string>
     <string name="nav_signup">Registrar Fundacion</string>
     <string name="nav_about">Acerca</string>
+    <string name="title_activity_category_list">Categories List</string>
 
 
 </resources>

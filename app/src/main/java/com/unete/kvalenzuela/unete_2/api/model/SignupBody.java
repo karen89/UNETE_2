@@ -1,4 +1,4 @@
-package com.unete.kvalenzuela.unete_2.api;
+package com.unete.kvalenzuela.unete_2.api.model;
 
 public class SignupBody {
 

@@ -1,7 +1,7 @@
-package com.unete.kvalenzuela.unete_2.api;
+package com.unete.kvalenzuela.unete_2.api.model;
 
-public class ProfileBody {
-
+public class CategoryDisplayList {
+    private int Id_AC;
     private String Razon_Social;
     private String Descripcion;
 
@@ -10,20 +10,20 @@ public class ProfileBody {
     private String Cruzam_1;
     private String Cruzam_2;
     private String Colonia;
-    private String CP;
+    private int CP;
     private String Municipio;
     private String Estado;
 
     private String Rep_Nombre;
     private String Rep_Cel;
     private String Rep_Correo;
-    private String CuentaBancaria;
-    private String Token;
 
-    public ProfileBody(String razon_Social, String descripcion, String calle, String numero,
-                       String cruzam_1, String cruzam_2, String colonia, String CP,
-                       String municipio, String estado, String rep_Nombre, String rep_Cel,
-                       String rep_Correo, String cuentaBancaria, String token) {
+    private String Logotipo;
+    private int CuentaBancaria;
+    private int Subcategoria_Id_SubCat;
+
+    public CategoryDisplayList(int id_AC, String razon_Social, String descripcion, String calle, String numero, String cruzam_1, String cruzam_2, String colonia, int CP, String municipio, String estado, String rep_Nombre, String rep_Cel, String rep_Correo, String logotipo, int cuentaBancaria, int subcategoria_Id_SubCat) {
+        Id_AC = id_AC;
         Razon_Social = razon_Social;
         Descripcion = descripcion;
         Calle = calle;
@@ -37,8 +37,17 @@ public class ProfileBody {
         Rep_Nombre = rep_Nombre;
         Rep_Cel = rep_Cel;
         Rep_Correo = rep_Correo;
+        Logotipo = logotipo;
         CuentaBancaria = cuentaBancaria;
-        Token = token;
+        Subcategoria_Id_SubCat = subcategoria_Id_SubCat;
+    }
+
+    public int getId_AC() {
+        return Id_AC;
+    }
+
+    public void setId_AC(int id_AC) {
+        Id_AC = id_AC;
     }
 
     public String getRazon_Social() {
@@ -97,11 +106,11 @@ public class ProfileBody {
         Colonia = colonia;
     }
 
-    public String getCP() {
+    public int getCP() {
         return CP;
     }
 
-    public void setCP(String CP) {
+    public void setCP(int CP) {
         this.CP = CP;
     }
 
@@ -145,19 +154,27 @@ public class ProfileBody {
         Rep_Correo = rep_Correo;
     }
 
-    public String getCuentaBancaria() {
+    public String getLogotipo() {
+        return Logotipo;
+    }
+
+    public void setLogotipo(String logotipo) {
+        Logotipo = logotipo;
+    }
+
+    public int getCuentaBancaria() {
         return CuentaBancaria;
     }
 
-    public void setCuentaBancaria(String cuentaBancaria) {
+    public void setCuentaBancaria(int cuentaBancaria) {
         CuentaBancaria = cuentaBancaria;
     }
 
-    public String getToken() {
-        return Token;
+    public int getSubcategoria_Id_SubCat() {
+        return Subcategoria_Id_SubCat;
     }
 
-    public void setToken(String token) {
-        Token = token;
+    public void setSubcategoria_Id_SubCat(int subcategoria_Id_SubCat) {
+        Subcategoria_Id_SubCat = subcategoria_Id_SubCat;
     }
 }

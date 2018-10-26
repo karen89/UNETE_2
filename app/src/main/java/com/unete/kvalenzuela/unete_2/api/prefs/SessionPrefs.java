@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.unete.kvalenzuela.unete_2.api.Asociacion;
+import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
 
 import java.util.HashMap;
 

@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.unete.kvalenzuela.unete_2.api.ApiError;
-import com.unete.kvalenzuela.unete_2.api.Asociacion;
-import com.unete.kvalenzuela.unete_2.api.ProfileBody;
+import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
+import com.unete.kvalenzuela.unete_2.api.model.ProfileBody;
 import com.unete.kvalenzuela.unete_2.api.UneteApi;
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
 

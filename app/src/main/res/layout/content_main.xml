@@ -59,7 +59,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="animalsCat"
                     android:src="@drawable/a_animales"
                     android:layout_weight="1"/>
 
@@ -70,18 +70,18 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="alimentationCat"
                     android:src="@drawable/a_alimentacion"
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:id="@+id/aducacion"
+                    android:id="@+id/educacion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="educationCat"
                     android:src="@drawable/a_educacion"
                     android:layout_weight="1"/>
 
@@ -112,7 +112,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="healthCat"
                     android:src="@drawable/a_salud"
                     android:layout_weight="1"/>
 
@@ -123,7 +123,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="sportsCat"
                     android:src="@drawable/a_deportivas"
                     android:layout_weight="1"/>
 
@@ -134,7 +134,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="asistenciaCat"
                     android:src="@drawable/a_asistenciasocial"
                     android:layout_weight="1"/>
 
@@ -145,7 +145,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="0dp"
-                    android:onClick="medioAmbienteCat"
+                    android:onClick="otherCat"
                     android:src="@drawable/a_otros"
                     android:layout_weight="1"/>
 
