@@ -72,12 +72,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         holder.razon.setText(asociacion.getRazon_Social());
         holder.descripcion.setText(asociacion.getDescripcion());
 
-        String uri = "@drawable/s" + asociacion.getSubcategoria_Id_SubCat();
+     /*   String uri = "@drawable/s" + asociacion.getSubcategoria_Id_SubCat();
         Context context = holder.subcategoria.getContext();
         int imageResource = context.getResources().getIdentifier(uri, "drawable", context.getPackageName());
         Drawable imagen = ContextCompat.getDrawable(context, imageResource);
 
-        holder.subcategoria.setBackground(imagen);
+        holder.subcategoria.setBackground(imagen);*/
     }
 
     @Override
@@ -95,7 +95,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
             razon = itemView.findViewById(R.id.txtnombreAC);
             descripcion = (TextView) itemView.findViewById(R.id.txtdescripcion);
-            subcategoria = (TextView) itemView.findViewById(R.id.subcatAC);
+            //subcategoria = (TextView) itemView.findViewById(R.id.subcatAC);
 
             itemView.setOnClickListener(this);
         }

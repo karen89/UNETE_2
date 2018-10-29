@@ -5,9 +5,9 @@
 
     <!-- Strings related to titles Activity -->
     <string name="title_activity_main">Inicio</string>
-    <string name="title_activity_login">Sign In</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
     <string name="title_activity_sign_up">Registrarse</string>
-    <string name="title_activity_categories">Categorias</string>
+    <string name="title_activity_categories">Categorías</string>
     <string name="title_activity_donate">Donar</string>
     <string name="title_activity_opine">Comentar</string>
     <string name="title_activity_location">Localizacion</string>

@@ -73,6 +73,7 @@
         </activity>
         <activity
             android:name=".DonateUNEActivity"
+            android:label="@string/title_activity_donate"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -81,6 +82,7 @@
         </activity>
         <activity
             android:name=".SignupActivity"
+            android:label="@string/title_activity_sign_up"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -112,8 +114,12 @@
         <activity android:name=".AboutActivity" />
         <activity
             android:name=".api.ui.CategoryListActivity"
-            android:label="@string/title_activity_category_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_categories"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

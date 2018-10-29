@@ -1,5 +1,7 @@
 package com.unete.kvalenzuela.unete_2.api.model;
 
+import java.util.List;
+
 public class CategoryDisplayList {
     private int Id_AC;
     private String Razon_Social;
@@ -177,4 +179,6 @@ public class CategoryDisplayList {
     public void setSubcategoria_Id_SubCat(int subcategoria_Id_SubCat) {
         Subcategoria_Id_SubCat = subcategoria_Id_SubCat;
     }
+
+
 }

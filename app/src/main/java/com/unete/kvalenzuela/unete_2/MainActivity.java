@@ -120,9 +120,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, PerfilActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_login) {
-            // Redirección al Login
             if (SessionPrefs.get(this).isLoggedIn()) {
-                //Redirige a perfil
                 //TODO: mensaje: "Estas logueado!"
                 Intent intent = new Intent(this, PerfilActivity.class);
                 startActivity(intent);
@@ -147,84 +145,57 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-    //TODO: ACCIONES PARA CARGAR LAS AC SEGUN CATEGORÍAS
-    //TODO: QUE SEA UNA FUNCION POR CATEGORIA O CHECAR SWITCH
-    /*Called when the user click "Donar $2" button*/
     public void donateScreen(View view) {
         Intent intent = new Intent(this, DonateUNEActivity.class);
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void animalsCat(View view) {
-        //Carga la lista de AC de animales ID=1
+    public void animalsCat(View view) { //animales ID=1
         Intent intent = new Intent(this, CategoryListActivity.class);
         String id = "1";
-
         intent.putExtra("Categoria_Id_Cat", id);
         //intent.putExtra("Categoria_Id_Cat", "1");
-        //try{
         startActivity(intent);
-        //    System.out.println("Logró ejecutarse");
-        //}catch (Exception e){
-        //    System.out.println(e.getMessage());
-        //}
     }
 
-    /*Called when the user click "" button*/
-    public void alimentationCat(View view) {
-        //Carga la lista de AC de alimentacion ID=2
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void alimentationCat(View view) {    //alimentacion ID=2
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "2");
         startActivity(intent);
     }
 
-
-    /*Called when the user click "" button*/
-    public void educationCat(View view) {
-        //Carga la lista de AC de educacion ID=3
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void educationCat(View view) {   //educacion ID=3
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "3");
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void medioAmbienteCat(View view) {
-        //Carga la lista de AC de medio ambiente ID=4
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void medioAmbienteCat(View view) {   //medio ambiente ID=4
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "4");
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void healthCat(View view) {
-        //Carga la lista de AC de salud ID=5
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void healthCat(View view) {  //salud ID=5
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "5");
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void sportsCat(View view) {
-        //Carga la lista de AC de deportivas ID=6
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void sportsCat(View view) {  //deportivas ID=6
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "6");
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void asistenciaCat(View view) {
-        //Carga la lista de AC de asistencia social ID=7
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void asistenciaCat(View view) {  //asistencia social ID=7
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "7");
         startActivity(intent);
     }
 
-    /*Called when the user click "" button*/
-    public void otherCat(View view) {
-        //Carga la lista de AC de otros ID=8
-        Intent intent = new Intent(this, ItemListActivity.class);
+    public void otherCat(View view) {   //otros ID=8
+        Intent intent = new Intent(this, CategoryListActivity.class);
         intent.putExtra("Categoria_Id_Cat", "8");
         startActivity(intent);
     }
