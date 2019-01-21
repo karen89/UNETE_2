@@ -1,24 +1,21 @@
 package com.unete.kvalenzuela.unete_2.api.ui;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.unete.kvalenzuela.unete_2.DetailActivity;
+import com.unete.kvalenzuela.unete_2.LoginActivity;
 import com.unete.kvalenzuela.unete_2.R;
-import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryDisplayList;
-import com.unete.kvalenzuela.unete_2.api.model.CategoryListBody;
+import com.unete.kvalenzuela.unete_2.itemListDetail.ItemDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.v7.widget.RecyclerView.*;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 
@@ -105,6 +102,26 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
                 mOnItemClickListener.onItemClick(mItems.get(position));
+
+                CategoryDisplayList ac = mItems.get(position);
+
+                Intent intent;
+                intent = new Intent(mContext, ItemDetailActivity.class);
+                intent.putExtra("nombreac", ac.getRazon_Social() == null?  "no ac" : ac.getRazon_Social() );
+                intent.putExtra("descripcion", ac.getDescripcion() == null?  "no desc" : ac.getDescripcion() );
+                intent.putExtra("responsable", ac.getRep_Nombre()== null?  "no name" : ac.getRep_Nombre());
+                intent.putExtra("email", ac.getRep_Correo() == null? "no email" : ac.getRep_Correo());
+                intent.putExtra("celular", ac.getRep_Cel() == null? "no tel" : ac.getRep_Cel());
+                intent.putExtra("calle", ac.getCalle() == null? "no calle" :  ac.getCalle());
+                intent.putExtra("numero", ac.getNumero() == null?  "no num" : ac.getNumero() );
+                intent.putExtra("cruz_1", ac.getCruzam_1() == null? "no crz1" :  ac.getCruzam_1());
+                intent.putExtra("cruz_2", ac.getCruzam_2() == null? "no crz2" :  ac.getCruzam_2());
+                intent.putExtra("colonia", ac.getColonia() == null? "no col" : ac.getColonia());
+                intent.putExtra("cp", ac.getCP());
+                intent.putExtra("localidad", ac.getMunicipio() == null? "no mun" :  ac.getMunicipio());
+                intent.putExtra("estado", ac.getEstado() == null? "no loc": ac.getEstado()) ;
+                intent.putExtra("cuenta", ac.getCuentaBancaria());
+                mContext.startActivity(intent);
             }
         }
     }

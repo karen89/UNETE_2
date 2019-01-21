@@ -143,6 +143,11 @@ public class CategoryListActivity extends AppCompatActivity  {
             @Override
             public void onItemClick(CategoryDisplayList clickedAssociation) {
                 // TODO: Codificar acciones de click en items
+                //TODO: TOMAR LOS DATOS DE LA ASOCIACION SELECCIONADA
+                //TODO: QUE DEBEN ESTAR DE DENTRO DEL BODY QUE SE ACABABA DE OBTENER
+                //int position = mCategoriesAdapter.getItemCount();
+                //obtenerDatosAC(position);
+
             }
         });
         mCategoriesList.setAdapter(mCategoriesAdapter);
