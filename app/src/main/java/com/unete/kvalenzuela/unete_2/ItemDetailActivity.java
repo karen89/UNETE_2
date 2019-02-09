@@ -1,4 +1,4 @@
-package com.unete.kvalenzuela.unete_2.itemListDetail;
+package com.unete.kvalenzuela.unete_2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-
-import com.unete.kvalenzuela.unete_2.R;
 
 /**
  * An activity representing a single Item detail screen. This

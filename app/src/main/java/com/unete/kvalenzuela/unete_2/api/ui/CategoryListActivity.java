@@ -2,8 +2,6 @@ package com.unete.kvalenzuela.unete_2.api.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,24 +13,15 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.unete.kvalenzuela.unete_2.R;
 import com.unete.kvalenzuela.unete_2.api.ApiError;
 import com.unete.kvalenzuela.unete_2.api.UneteApi;
 import com.unete.kvalenzuela.unete_2.api.model.AllListBody;
-import com.unete.kvalenzuela.unete_2.api.model.ApiResponseCategories;
-import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryDisplayList;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryListBody;
-import com.unete.kvalenzuela.unete_2.api.model.LoginBody;
-import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
-import com.unete.kvalenzuela.unete_2.api.ui.CategoriesAdapter;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

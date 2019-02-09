@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.unete.kvalenzuela.unete_2.DetailActivity;
-import com.unete.kvalenzuela.unete_2.LoginActivity;
+import com.unete.kvalenzuela.unete_2.ItemDetailActivity;
 import com.unete.kvalenzuela.unete_2.R;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryDisplayList;
-import com.unete.kvalenzuela.unete_2.itemListDetail.ItemDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,8 +103,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
                 CategoryDisplayList ac = mItems.get(position);
 
-                Intent intent;
-                intent = new Intent(mContext, ItemDetailActivity.class);
+                Intent intent = new Intent(mContext, ItemDetailActivity.class);
                 intent.putExtra("nombreac", ac.getRazon_Social() == null?  "no ac" : ac.getRazon_Social() );
                 intent.putExtra("descripcion", ac.getDescripcion() == null?  "no desc" : ac.getDescripcion() );
                 intent.putExtra("responsable", ac.getRep_Nombre()== null?  "no name" : ac.getRep_Nombre());

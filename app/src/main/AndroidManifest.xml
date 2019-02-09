@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".itemListDetail.ItemListActivity"
+            android:name=".ItemListActivity"
             android:label="@string/title_item_list"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -54,13 +54,13 @@
                 android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
         <activity
-            android:name=".itemListDetail.ItemDetailActivity"
+            android:name=".ItemDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".itemListDetail.ItemListActivity"
+            android:parentActivityName=".ItemListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity" />
+                android:value="com.unete.kvalenzuela.unete_2.ItemListActivity" />
         </activity>
         <activity
             android:name=".PerfilActivity"

@@ -10,5 +10,5 @@
     android:layout_marginRight="16dp"
     android:layout_marginTop="8dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity"
+    tools:context="com.unete.kvalenzuela.unete_2.ItemListActivity"
     tools:listitem="@layout/item_list_content" />

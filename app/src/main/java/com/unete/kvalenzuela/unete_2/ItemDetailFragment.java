@@ -1,4 +1,4 @@
-package com.unete.kvalenzuela.unete_2.itemListDetail;
+package com.unete.kvalenzuela.unete_2;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.unete.kvalenzuela.unete_2.R;
-import com.unete.kvalenzuela.unete_2.dummy.DummyContent;
 
 /**
  * A fragment representing a single Item detail screen.

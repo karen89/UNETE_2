@@ -2,8 +2,6 @@ package com.unete.kvalenzuela.unete_2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.internal.SnackbarContentLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -20,7 +18,6 @@ import android.widget.LinearLayout;
 
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
 import com.unete.kvalenzuela.unete_2.api.ui.CategoryListActivity;
-import com.unete.kvalenzuela.unete_2.itemListDetail.ItemListActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
