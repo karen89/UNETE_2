@@ -86,6 +86,8 @@ public class SessionPrefs {
             editor.apply();
 
             mIsLoggedIn = true;
+
+            System.out.println("representante: " + PREF_AC_REPNOMBRE);
         }
     }
     
@@ -114,6 +116,10 @@ public class SessionPrefs {
         user.put(PREF_AC_TOKEN, mPrefs.getString(PREF_AC_TOKEN, null));
 
         return user;
+    }
+
+    public String getToken(){
+        return mPrefs.getString(PREF_AC_TOKEN, null);
     }
 
     /**Clear session details* */

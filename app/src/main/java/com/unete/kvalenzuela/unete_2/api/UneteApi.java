@@ -1,7 +1,9 @@
 package com.unete.kvalenzuela.unete_2.api;
 
 import com.unete.kvalenzuela.unete_2.api.model.AllListBody;
+import com.unete.kvalenzuela.unete_2.api.model.ApiMessageResponse;
 import com.unete.kvalenzuela.unete_2.api.model.ApiResponseCategories;
+import com.unete.kvalenzuela.unete_2.api.model.ApiResponseRegisters;
 import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
 import com.unete.kvalenzuela.unete_2.api.model.AssociationBody;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryDisplayList;
@@ -10,12 +12,20 @@ import com.unete.kvalenzuela.unete_2.api.model.LoginBody;
 import com.unete.kvalenzuela.unete_2.api.model.ProfileBody;
 import com.unete.kvalenzuela.unete_2.api.model.SignupBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 public interface UneteApi {
 
@@ -43,4 +53,16 @@ public interface UneteApi {
 
     @POST("asociacion/getAffiliate")
     Call<Asociacion> getAffiliate(@Body AssociationBody associationBody);
+
+    @GET("asociacion")
+    Call<ApiResponseRegisters> getRegisters(@Header("Authorization") String token,
+                                               @QueryMap Map<String, Object> parameters);
+    Call<ApiResponseRegisters> getRegisters(@Body AllListBody allListBody);
+
+    @Headers("Content-Type: application/json")
+    @PATCH("asociacion/{id}")
+    Call<ApiMessageResponse> cancelRegister(@Path("id") int appoitmentId,
+                                               @Header("Authorization") String token,
+                                               @Body HashMap<String, String> statusMap);
+
 }

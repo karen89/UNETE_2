@@ -170,6 +170,7 @@
     <string name="nav_signup">Registrar Fundacion</string>
     <string name="nav_about">Acerca</string>
     <string name="title_activity_category_list">Categories List</string>
+    <string name="title_activity_manager">ManagerActivity</string>
 
 
 </resources>

@@ -164,8 +164,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            if (SessionPrefs.PREF_AC_REPNOMBRE.equals("Pablo Rosete")) {
+                Intent intent = new Intent(this, ManagerActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_ac) {
             Intent intent = new Intent(this, CategoryListActivity.class);
             intent.putExtra("Categoria_Id_Cat", "0");
@@ -209,14 +214,13 @@ public class MainActivity extends AppCompatActivity
 
     public void donateScreen(View view) {
         Intent intent = new Intent(this, DonateUNEActivity.class);
+        //TODO: pasar el id de la AC a la que se donará
         startActivity(intent);
     }
 
     public void animalsCat(View view) { //animales ID=1
         Intent intent = new Intent(this, CategoryListActivity.class);
-        String id = "1";
-        intent.putExtra("Categoria_Id_Cat", id);
-        //intent.putExtra("Categoria_Id_Cat", "1");
+        intent.putExtra("Categoria_Id_Cat", "1");
         startActivity(intent);
     }
 

@@ -288,7 +288,7 @@ public class CategoryListActivity extends AppCompatActivity  {
     }
 
     private void showErrorMessage(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
     private void showAppointments(List<CategoryDisplayList> serverAppointments) {
