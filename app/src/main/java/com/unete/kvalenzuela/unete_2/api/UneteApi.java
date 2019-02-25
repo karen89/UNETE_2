@@ -2,14 +2,14 @@ package com.unete.kvalenzuela.unete_2.api;
 
 import com.unete.kvalenzuela.unete_2.api.model.AllListBody;
 import com.unete.kvalenzuela.unete_2.api.model.ApiMessageResponse;
-import com.unete.kvalenzuela.unete_2.api.model.ApiResponseCategories;
-import com.unete.kvalenzuela.unete_2.api.model.ApiResponseRegisters;
 import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
 import com.unete.kvalenzuela.unete_2.api.model.AssociationBody;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryDisplayList;
 import com.unete.kvalenzuela.unete_2.api.model.CategoryListBody;
+import com.unete.kvalenzuela.unete_2.api.model.ChangeStatusBody;
 import com.unete.kvalenzuela.unete_2.api.model.LoginBody;
 import com.unete.kvalenzuela.unete_2.api.model.ProfileBody;
+import com.unete.kvalenzuela.unete_2.api.model.RegistersDisplayList;
 import com.unete.kvalenzuela.unete_2.api.model.SignupBody;
 
 import java.util.HashMap;
@@ -55,14 +55,10 @@ public interface UneteApi {
     Call<Asociacion> getAffiliate(@Body AssociationBody associationBody);
 
     @GET("asociacion")
-    Call<ApiResponseRegisters> getRegisters(@Header("Authorization") String token,
-                                               @QueryMap Map<String, Object> parameters);
-    Call<ApiResponseRegisters> getRegisters(@Body AllListBody allListBody);
+    Call<List<RegistersDisplayList>> getRegisters();
 
-    @Headers("Content-Type: application/json")
-    @PATCH("asociacion/{id}")
-    Call<ApiMessageResponse> cancelRegister(@Path("id") int appoitmentId,
-                                               @Header("Authorization") String token,
-                                               @Body HashMap<String, String> statusMap);
+    @PUT ("asociacion/statuschange")
+    Call<Asociacion> changeStatus (@Body ChangeStatusBody changeStatusBody);
+
 
 }

@@ -83,7 +83,7 @@ public class SessionPrefs {
             editor.putInt(PREF_AC_CUENTABANCARIA, affiliate.getCuentaBancaria());
             editor.putInt(PREF_AC_SUBCATEGORIA_ID, affiliate.getSubcategoria_Id_SubCat());
             editor.putString(PREF_AC_TOKEN, affiliate.getToken());
-            editor.apply();
+            editor.commit();
 
             mIsLoggedIn = true;
 

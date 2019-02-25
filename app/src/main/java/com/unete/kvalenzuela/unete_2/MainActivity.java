@@ -19,11 +19,15 @@ import android.widget.LinearLayout;
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
 import com.unete.kvalenzuela.unete_2.api.ui.CategoryListActivity;
 
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    // Session Manager Class
+    SessionPrefs session;
 
     ViewPager viewPager;
     LinearLayout sliderDotsPanel;
@@ -133,10 +137,15 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        session = new SessionPrefs(getApplicationContext());
+        /** Get user data from session* */
+        HashMap<String, String> user = session.getUserDetails();
+        String representante_ = user.get(SessionPrefs.PREF_AC_REPNOMBRE);
+
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            if (SessionPrefs.get(this).isLoggedIn()) {
+            if (session.isLoggedIn()) {
                 System.out.println("Cerrando Sesión");
                 //TODO: mostrar notificacion de cerrado
                 SessionPrefs.get(this).logOut();
@@ -152,6 +161,12 @@ public class MainActivity extends AppCompatActivity
 //            Intent intent = new Intent(this, AboutActivity.class);
 //            startActivity(intent);
 //            return true;
+        } else if (id == R.id.action_manager) {
+            if (session.isLoggedIn() &&
+                    representante_.equals("Pablo Rosete")) {
+                Intent intent = new Intent(this, ManagerActivity.class);
+                startActivity(intent);
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -164,13 +179,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            if (SessionPrefs.PREF_AC_REPNOMBRE.equals("Pablo Rosete")) {
-                Intent intent = new Intent(this, ManagerActivity.class);
-                startActivity(intent);
-            } else {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_ac) {
             Intent intent = new Intent(this, CategoryListActivity.class);
             intent.putExtra("Categoria_Id_Cat", "0");

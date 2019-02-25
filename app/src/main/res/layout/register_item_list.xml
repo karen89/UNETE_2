@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="140dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardUseCompatPadding="true">
@@ -29,7 +29,7 @@
         <TextView
             android:id="@+id/text_razon_social"
             style="@style/Base.TextAppearance.AppCompat.Body2"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
@@ -76,11 +76,24 @@
             android:ellipsize="end"
             tools:text="Mail" />
 
+        <TextView
+            android:id="@+id/text_subCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_rep_correo"
+            android:layout_alignStart="@+id/text_rep_correo"
+            android:layout_below="@+id/text_rep_correo"
+            android:ellipsize="end"
+            tools:text="categoria" />
+
         <Button
             android:id="@+id/button_activate_appointment"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_subCat"
+            android:layout_alignStart="@+id/text_subCat"
+            android:layout_below="@+id/text_subCat"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/vertical_separator"

@@ -170,7 +170,8 @@ public class CategoryListActivity extends AppCompatActivity  {
                 listCall = mUneteApi.getAll(new AllListBody());
                 listCall.enqueue(new Callback<List<CategoryDisplayList>>() {
                     @Override
-                    public void onResponse(Call<List<CategoryDisplayList>> call, Response<List<CategoryDisplayList>> response) {
+                    public void onResponse(Call<List<CategoryDisplayList>> call,
+                                           Response<List<CategoryDisplayList>> response) {
                         if (!response.isSuccessful()) {
                             String error = "Ha ocurrido un error. Contacte al administrador";
                             if (response.errorBody()
@@ -205,7 +206,7 @@ public class CategoryListActivity extends AppCompatActivity  {
                             showLoadingIndicator(false);
                             showErrorMessage("No existen registros");
                             //TODO:que hacer si no hay registros??
-                            CategoryListActivity.this.finish();
+                            showNoAppointments();
                         }
                     }
 
@@ -259,7 +260,7 @@ public class CategoryListActivity extends AppCompatActivity  {
                             showLoadingIndicator(false);
                             showErrorMessage("No existen registros");
                             //TODO:que hacer si no hay registros??
-                            CategoryListActivity.this.finish();
+                            //CategoryListActivity.this.finish();
                         }
                     }
 
@@ -289,6 +290,11 @@ public class CategoryListActivity extends AppCompatActivity  {
 
     private void showErrorMessage(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showNoAppointments() {
+        mCategoriesList.setVisibility(View.GONE);
+      //  mEmptyStateContainer.setVisibility(View.VISIBLE);
     }
 
     private void showAppointments(List<CategoryDisplayList> serverAppointments) {

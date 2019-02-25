@@ -27,7 +27,11 @@
         <activity
             android:name=".ManagerActivity"
             android:label="@string/title_activity_manager"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
@@ -112,7 +116,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
         </activity>
-        <activity android:name=".AboutActivity" />
+        <activity android:name=".AboutActivity"
+            android:label="Acerca"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.unete.kvalenzuela.unete_2.MainActivity" />
+        </activity>
         <activity
             android:name=".api.ui.CategoryListActivity"
             android:label="@string/title_activity_categories"

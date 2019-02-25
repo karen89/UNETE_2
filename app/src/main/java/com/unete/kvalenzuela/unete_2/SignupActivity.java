@@ -256,7 +256,7 @@ public class SignupActivity extends AppCompatActivity {
                     }
 
                     //TODO:Show successful Signup message
-                    Toast.makeText(getBaseContext(), "Registro Exitoso", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
 
                     //TODO: Show Main
                     showMainScreen();

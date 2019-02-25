@@ -236,7 +236,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //Save AC at PREFs
                     SessionPrefs.get(LoginActivity.this).createSession(response.body());
-
+                    System.out.println("TEST" + response.body());
                     //Show Profile
                     showProfileScreen();
                 }

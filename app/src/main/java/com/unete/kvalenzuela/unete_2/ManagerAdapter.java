@@ -67,7 +67,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.ViewHold
         // estado: se colorea indicador segÃºn el estado
         switch (appointment.getEstatus()) {
             case "ACTIVO":
-                // mostrar botÃ³n
+                // ocultar botÃ³n
                 holder.cancelButton.setVisibility(View.GONE);
                 statusIndicator.setBackgroundResource(R.color.completedStatus);
                 break;
@@ -77,16 +77,17 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.ViewHold
                 statusIndicator.setBackgroundResource(R.color.cancelledStatus);
                 break;
             case "EN ESPERA":
-                // ocultar botÃ³n
+                // mostrar botÃ³n
                 holder.cancelButton.setVisibility(View.VISIBLE);
                 statusIndicator.setBackgroundResource(R.color.activeStatus);
                 break;
         }
 
-        holder.razon_social.setText(appointment.getRep_Nombre());
+        holder.razon_social.setText(appointment.getRazon_Social());
         holder.representante.setText(appointment.getRep_Nombre());
         holder.rep_cel.setText(appointment.getRep_Cel());
         holder.rep_correo.setText(appointment.getRep_Correo());
+        holder.subCategory.setText(appointment.getSubcategoria_Id_SubCat());
     }
 
     @Override
@@ -99,6 +100,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.ViewHold
         public TextView representante;
         public TextView rep_cel;
         public TextView rep_correo;
+        public TextView subCategory;
         public Button cancelButton;
         public View statusIndicator;
 
@@ -110,6 +112,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.ViewHold
             representante = (TextView) itemView.findViewById(R.id.text_rep_name);
             rep_cel = (TextView) itemView.findViewById(R.id.text_rep_cel);
             rep_correo = (TextView) itemView.findViewById(R.id.text_rep_correo);
+            subCategory = (TextView) itemView.findViewById(R.id.text_subCat);
             cancelButton = (Button) itemView.findViewById(R.id.button_activate_appointment);
 
             cancelButton.setOnClickListener(new View.OnClickListener() {

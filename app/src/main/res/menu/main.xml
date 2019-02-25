@@ -13,4 +13,10 @@
         android:icon="@drawable/ic_help_black_48dp"
         android:title="Acerca"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_manager"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Administrador"
+        app:showAsAction="never" />
 </menu>

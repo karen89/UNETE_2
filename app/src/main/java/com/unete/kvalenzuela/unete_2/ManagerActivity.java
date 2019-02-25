@@ -2,8 +2,6 @@ package com.unete.kvalenzuela.unete_2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +20,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.unete.kvalenzuela.unete_2.api.ApiError;
 import com.unete.kvalenzuela.unete_2.api.UneteApi;
-import com.unete.kvalenzuela.unete_2.api.model.AllListBody;
 import com.unete.kvalenzuela.unete_2.api.model.ApiMessageResponse;
-import com.unete.kvalenzuela.unete_2.api.model.ApiResponseRegisters;
+import com.unete.kvalenzuela.unete_2.api.model.Asociacion;
+import com.unete.kvalenzuela.unete_2.api.model.ChangeStatusBody;
 import com.unete.kvalenzuela.unete_2.api.model.RegistersDisplayList;
 import com.unete.kvalenzuela.unete_2.api.prefs.SessionPrefs;
 
@@ -79,6 +77,7 @@ public class ManagerActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("");
 
         /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +95,13 @@ public class ManagerActivity extends AppCompatActivity {
         }
 //dfghdgf
         mStatusFilterSpinner = (Spinner) findViewById(R.id.toolbar_spinner);
+        ArrayAdapter<String> statusFilterAdapter =
+                new ArrayAdapter<>(
+                        getApplicationContext(),
+                        android.R.layout.simple_spinner_item,
+                        RegistersDisplayList.STATES_VALUES);
+        statusFilterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mStatusFilterSpinner.setAdapter(statusFilterAdapter);
         mStatusFilterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -109,13 +115,7 @@ public class ManagerActivity extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> statusFilterAdapter =
-                new ArrayAdapter<>(
-                        getApplicationContext(),
-                        android.R.layout.simple_spinner_item,
-                        RegistersDisplayList.STATES_VALUES);
-        mStatusFilterSpinner.setAdapter(statusFilterAdapter);
-        statusFilterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         mRegisterList = (RecyclerView) findViewById(R.id.list_appointments);
         mManagerAdapter = new ManagerAdapter(this, new ArrayList<RegistersDisplayList>(0));
@@ -126,9 +126,10 @@ public class ManagerActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelAppointment(RegistersDisplayList canceledAppointment) {
+            public void onCancelAppointment(RegistersDisplayList activatedAssociation) {
                 // Cancelar cita
-                cancelAppointmnent(canceledAppointment.getId());
+                System.out.println("Test ID selected: " + activatedAssociation.getId_AC());
+                activateAssociation(activatedAssociation.getId_AC());
             }
         });
 
@@ -214,6 +215,7 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     private void loadAppointments(String rawStatus) {
+        System.out.println("TEST: status selected: " + rawStatus);
         // Mostrar estado de carga
         showLoadingIndicator(true);
 
@@ -230,11 +232,11 @@ public class ManagerActivity extends AppCompatActivity {
             case "Inactivo":
                 status = "INACTIVO";
                 break;
-            case "En espera":
+            case "En Espera":
                 status = "EN ESPERA";
                 break;
             default:
-                status = "Todas";
+                status = "TODAS";
         }
 
         // Construir mapa de parÃ¡metros
@@ -243,11 +245,11 @@ public class ManagerActivity extends AppCompatActivity {
         parameters.put("display", "list");
 
         // Realizar peticiÃ³n HTTP
-        Call<ApiResponseRegisters> call = mUneteApi.getRegisters(new AllListBody());
-        call.enqueue(new Callback<ApiResponseRegisters>() {
+        Call<List<RegistersDisplayList>> call = mUneteApi.getRegisters();
+        call.enqueue(new Callback<List<RegistersDisplayList>>() {
             @Override
-            public void onResponse(Call<ApiResponseRegisters> call,
-                                   Response<ApiResponseRegisters> response) {
+            public void onResponse(Call<List<RegistersDisplayList>> call,
+                                   Response<List<RegistersDisplayList>> response) {
                 if (!response.isSuccessful()) {
                     // Procesar error de API
                     String error = "Ha ocurrido un error. Contacte al administrador";
@@ -273,21 +275,22 @@ public class ManagerActivity extends AppCompatActivity {
                     return;
                 }
 
-                List<RegistersDisplayList> serverAppointments = response.body().getResults();
+                List<RegistersDisplayList> serverAppointments = response.body();
 
                 if (serverAppointments.size() > 0) {
                     // Mostrar lista de citas mÃ©dicas
+                    showLoadingIndicator(false);
                     showAppointments(serverAppointments);
                 } else {
                     // Mostrar empty state
+                    showLoadingIndicator(false);
                     showNoAppointments();
                 }
 
-                showLoadingIndicator(false);
             }
 
             @Override
-            public void onFailure(Call<ApiResponseRegisters> call, Throwable t) {
+            public void onFailure(Call<List<RegistersDisplayList>> call, Throwable t) {
                 showLoadingIndicator(false);
                 Log.d(TAG, "PeticiÃ³n rechazada:" + t.getMessage());
                 showErrorMessage("Error de comunicaciÃ³n");
@@ -295,11 +298,8 @@ public class ManagerActivity extends AppCompatActivity {
         });
     }
 
-    //TODO: cambiar nombre a ActivarAsociacion
-    private void cancelAppointmnent(int appointmentId) {
-        // TODO: Mostrar estado de carga
+    private void activateAssociation(int id) {
         showLoadingIndicator(true);
-
 
         // Obtener token de usuario
         String token = SessionPrefs.get(this).getToken();
@@ -308,14 +308,21 @@ public class ManagerActivity extends AppCompatActivity {
         HashMap<String, String> statusMap = new HashMap<>();
         statusMap.put("Estatus", "ACTIVO");
 
+        String status = "ACTIVO";
+
         // Enviar peticiÃ³n
-        mUneteApi.cancelRegister(appointmentId, token, statusMap).enqueue(
-                new Callback<ApiMessageResponse>() {
+        Call<Asociacion> changeCall = mUneteApi.changeStatus(new ChangeStatusBody(id, status));
+        changeCall.enqueue(
+                new Callback<Asociacion>() {
                     @Override
-                    public void onResponse(Call<ApiMessageResponse> call,
-                                           Response<ApiMessageResponse> response) {
+                    public void onResponse(Call<Asociacion> call,
+                                           Response<Asociacion> response) {
                         if (!response.isSuccessful()) {
-                            // Procesar error de API
+                            // Procesar error de API}
+                            System.out.println("TEST ERROR: "+response.errorBody());
+                            System.out.println("TEST ERROR: "+response.message());
+                            System.out.println("TEST ERROR: "+response.raw().isSuccessful());
+
                             String error = "Ha ocurrido un error. Contacte al administrador";
                             if (response.errorBody()
                                     .contentType()
@@ -334,22 +341,21 @@ public class ManagerActivity extends AppCompatActivity {
                                 }
                             }
 
-                            // TODO: Ocultar estado de carga
                             showLoadingIndicator(false);
                             showErrorMessage(error);
                             return;
                         }
 
                         // CancelaciÃ³n Exitosa
-                        Log.d(TAG, response.body().getMessage());
-                        loadAppointments(getCurrentState());
-                        // TODO: Ocultar estado de carga
                         showLoadingIndicator(false);
+                        Log.d(TAG, response.body().getRazon_Social() + " Activada");
+                        Toast.makeText(getBaseContext(), response.body().getRazon_Social() + " Activada", Toast.LENGTH_SHORT).show();
+                        loadAppointments(getCurrentState());
+
                     }
 
                     @Override
-                    public void onFailure(Call<ApiMessageResponse> call, Throwable t) {
-                        // TODO: Ocultar estado de carga
+                    public void onFailure(Call<Asociacion> call, Throwable t) {
                         showLoadingIndicator(false);
                         Log.d(TAG, "PeticiÃ³n rechazada:" + t.getMessage());
                         showErrorMessage("Error de comunicaciÃ³n");
